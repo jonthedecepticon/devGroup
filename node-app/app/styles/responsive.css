@@ -1,0 +1,67 @@
+/*
+
+Things to remember:
+
+1. Always use proper indentation in your css and html
+2. An "#" selector or 'id' will override a '.' selector or 'class'
+3. A '.' selector will override a native selector, like 'div'
+
+*/
+
+/********************************/
+/* Responsive *******************/
+/********************************/
+
+@media screen and (min-width: 420px) {
+	.banner {
+		padding: 50px 0;
+	}
+	.banner h1{
+		font-size: 4em;
+	    display: inline-block;
+	}
+	.banner h2{
+		font-size: 2em;
+	  	font-weight: 300;
+	  	margin: 0;
+	}
+	#center_right{
+		width: 100%;
+	}
+	#search_nav input:focus{
+  		width: 100px;
+	}
+}
+@media screen and (min-width: 768px) {
+	.banner h1{
+	    font-size: 4em;
+	    display: inline-block;
+	    margin: 0;
+	}
+  	.banner h2{
+		margin: 30px 0 0 0;
+	}
+	.filterButton{
+		display: inline-block;
+	}
+	#search_nav input:focus{
+  		width: 200px;
+	}
+	#center_left{
+		width: 200px;
+	}
+	#center_right {
+		width: 358px;
+		padding: 0 0 0 30px;
+	}
+	.modal-dialog.createModal {
+		max-width: 400px;
+		margin: 100px auto;
+	}
+}
+@media screen and (min-width: 860px) {
+}
+@media screen and (min-width: 1200px) {
+	.banner{
+	}
+}

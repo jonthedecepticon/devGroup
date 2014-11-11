@@ -1,0 +1,463 @@
+/****************************\
+  HEADER
+\****************************/
+
+
+.controls{
+  color: #eee;
+  position: relative;
+  overflow: auto;
+}
+
+.controls-right{
+  float: right;
+}
+
+.controls-left{
+  float: left;
+}
+
+header input {
+
+}
+
+/****************************\
+  MixitUP Section 
+\****************************/
+
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, button{
+  font-family: 'Helvetica Neue', arial, sans-serif;
+}
+
+label{
+  font-weight: 300;
+  margin: 0 .4em 0 0;
+}
+
+button{
+  display: inline-block;
+  padding: .4em .8em;
+  background: #666;
+  border: 0;
+  color: #ddd;
+  font-size: 16px;
+  font-weight: 300;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button.active{
+  background: #68b8c4;
+}
+
+button:focus{
+  outline: 0 none;
+}
+
+button + label{
+  margin-left: 1em;
+}
+
+.container{
+  padding: 0 0 0 0;
+  /*text-align: justify; commented out because initial load conflicting with filtered results*/ 
+  /*font-size: 0.1px;*/
+  width: 100%;
+  
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+.container:after{
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+.container .mix,
+.container .gap {
+  display: inline-block;
+  width: 48%;
+/*  overflow: hidden;*/
+}
+
+.container .mix {
+  text-align: left;
+  /*background: #03899c;*/
+  margin-bottom: 15px;
+  display: none;
+}
+
+.container .mix.category-1{
+  /*border-top: 2px solid limegreen;*/
+}
+
+.container .mix.category-2{
+  border-top: 2px solid yellow;
+}
+
+.container .mix:after{
+  /*content: attr(data-myorder);*/
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 4% 6%;
+  font-weight: 700;
+}
+
+#list-container {
+  padding: 60px 10px 10px;
+}
+
+
+/****************
+  #Container
+****************/
+
+.container.list .mix{
+  width: 100%;
+}
+
+.container.list .mix:before{
+  padding-top: 40px;
+}
+
+
+/****************
+  #Grid Mix Item
+****************/
+.grid .mix {
+  text-align: left;
+  overflow: hidden;
+  position: relative;
+  height: 130px;
+  margin: 1%;
+}
+
+.grid .mix-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border: 1px solid #e5e5e5;
+  overflow: auto;
+  background-color: #ffffff;
+  padding: 5px;
+}
+
+.grid .mix p {
+  margin: 0;
+}
+
+.grid .mix-title {
+  float: left;
+  line-height: 15px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: #6b6b6b;
+}
+
+.grid .mix-title span {
+  font-size: 10px;
+  font-weight: 300;
+}
+.grid .mix img {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.grid .score-circle {
+  background-color: #f0b23a;
+  border-radius: 50%;
+  padding: 4px;
+  color: #ffffff;
+  font-weight: 500;
+  position: relative;
+  float: right;
+  height: 28px;
+  width: 28px;
+  padding: 4px 6px;
+  font-size: 14px;
+}
+
+/****************************\
+  MixitUP Section 
+\****************************/
+
+#wrapper {
+    padding-left:0;
+    -webkit-transition:all .5s ease
+}
+
+#wrapper.toggled {
+    padding-left:250px
+}
+
+#sidebar-wrapper {
+    z-index:1000;
+    position:fixed
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width:250px
+}
+
+#page-content-wrapper {
+    width:100%;
+    padding:15px
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position:absolute;
+    margin-right:-250px
+}
+
+.btn.btn-fab,.btn.btn-fab .ripple-wrapper {
+    border-radius:100%
+}
+
+.form-control,.form-control-wrapper .form-control,.form-control-wrapper .form-control.focus,.form-control-wrapper .form-control:focus,.form-control.focus,.form-control:focus,fieldset[disabled] .form-control,fieldset[disabled] .form-control.focus,fieldset[disabled] .form-control:focus {
+    padding:0;
+    float:none
+}
+
+.form-control-wrapper .form-control.focus:not(textarea):not(select),.form-control-wrapper .form-control:focus:not(textarea):not(select),.form-control-wrapper .form-control:not(textarea):not(select),.form-control.focus:not(textarea):not(select),.form-control:focus:not(textarea):not(select),.form-control:not(textarea):not(select),fieldset[disabled] .form-control.focus:not(textarea):not(select),fieldset[disabled] .form-control:focus:not(textarea):not(select),fieldset[disabled] .form-control:not(textarea):not(select) {
+    height:28px
+}
+
+.form-control-wrapper .form-control.focus:disabled,.form-control-wrapper .form-control:disabled,.form-control-wrapper .form-control:focus:disabled,.form-control.focus:disabled,.form-control:disabled,.form-control:focus:disabled,fieldset[disabled] .form-control.focus:disabled,fieldset[disabled] .form-control:disabled,fieldset[disabled] .form-control:focus:disabled {
+    border-style:dashed
+}
+
+.form-control-wrapper {
+    position:relative
+}
+
+.form-control-wrapper .form-control.focus,.form-control-wrapper .form-control:focus {
+    outline:0
+}
+
+.form-control-wrapper .floating-label {
+    color:#7E7E7E;
+    font-size:14px
+}
+
+.form-control-wrapper .form-control:not(.empty)~.floating-label {
+    top:-10px;
+    font-size:10px
+}
+
+.form-control-wrapper .form-control.focus:invalid~.floating-label,.form-control-wrapper .form-control:focus:invalid~.floating-label {
+    color:#f44336
+}
+
+.form-control-wrapper .form-control.focus~.material-input:after,.form-control-wrapper .form-control:focus~.material-input:after {
+    background-color:#5264ae
+}
+
+.form-control-wrapper .form-control.focus:invalid~.material-input:after,.form-control-wrapper .form-control.focus:invalid~.material-input:before,.form-control-wrapper .form-control:focus:invalid~.material-input:after,.form-control-wrapper .form-control:focus:invalid~.material-input:before {
+    background-color:#f44336
+}
+
+.form-control-wrapper .form-control.empty~.floating-label {
+    opacity:1
+}
+
+.form-control-wrapper .material-input:before {
+    position:absolute
+}
+
+.form-control-wrapper .form-control.focus~.material-input:before,.form-control-wrapper .form-control:focus~.material-input:before {
+    transform:scaleX(1);
+    transition:transform .2s ease-out
+}
+
+.form-control-wrapper .material-input:after {
+    position:absolute
+}
+
+.form-control-wrapper .input-lg~.material-input:after {
+    height:26px
+}
+
+.form-control-wrapper textarea {
+    resize:none
+}
+
+.form-control-wrapper textarea~.form-control-highlight {
+    margin-top:-11px
+}
+
+.form-control-wrapper .form-control.focus~.material-input:after,.form-control-wrapper .form-control:focus~.material-input:after {
+    animation:input-highlight .3s ease;
+    animation-fill-mode:forwards
+}
+
+.form-control-wrapper select~.material-input:after {
+    display:none
+}
+
+.input-group .form-control-wrapper {
+    margin-right:5px;
+    margin-left:5px
+}
+
+.input-group .form-control-wrapper .form-control {
+    float:none
+}
+
+.form-control-wrapper input[type=file] {
+    opacity:0;
+    position:absolute
+}
+
+.navbar .navbar-form .form-control,.navbar .navbar-form .form-control-wrapper .form-control {
+    border-color:rgba(255,255,255,.84);
+    color:rgba(255,255,255,.84)
+}
+
+.navbar .navbar-form .form-control-wrapper .material-input:before,.navbar .navbar-form .form-control-wrapper input:focus~.material-input:after {
+    background-color:rgba(255,255,255,.84)
+}
+
+.ripple-wrapper {
+    position:absolute;
+    top:0
+}
+
+/* Sidebar Styles */
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background: #000;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+/****************************\
+  Responsive MixItUp 
+\****************************/
+
+@media all and (min-width: 480px){ /* bootstrap xs */
+  .container .mix,
+  .container .gap{
+    width: 31.3%;
+    height: 142px;
+  }
+}
+
+@media all and (min-width: 700px){
+  .container .mix,
+  .container .gap{
+    width: 23%;
+    height: 156px;
+  }
+}
+
+@media all and (min-width: 768px){ /* bootstrap sm */
+  
+}
+
+@media all and (min-width: 992px){ /* bootstrap md */
+  .container .mix,
+  .container .gap{
+    width: 18%;
+    height: 181px;
+  }
+}
+
+  @media all and (min-width: 1200px){ /* bootstrap lg */
+  .container .mix,
+  .container .gap{
+    width: 14.6%;
+    height: 189px;
+  }
+}

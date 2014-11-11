@@ -1,0 +1,264 @@
+
+<div class="top_nav">
+
+<!-- - - - - - 
+  #TOP LEFT 
+- - - - - - - -->
+  <div id="top_nav_left">
+    <img src="http://uvef.net/wp-content/uploads/2014/09/UVEF-Logo1.png" id="sidebar-toggle-left"/>
+    <div class='sidebar-open-left' id='left'>
+      <ul>
+        <input type='button' value='U P V O T E S' class="sideFilterButton" ng-click='setFilter({role: "Agent"})'></input>
+        <input type='button' value='S O C I A L' class="sideFilterButton" ng-click='setFilter({role: "Appraiser"})'></input>
+      </ul>
+    </div>
+  </div>
+  
+      
+<!-- LIST OWNER -->
+  <div class='input-group' id='location_nav'>
+    <h1>UVEF 100</h1>
+  </div>
+
+
+
+<!-- TOP SORT BUTTONS -->
+  <div class='sortButtons'>
+    <input type='button' value='U P V O T E S' class="filterButton" ng-click='setFilter({role: "Agent"})'></input>
+    <input type='button' value='S O C I A L' class="filterButton" ng-click='setFilter({role: "Appraiser"})'></input>
+  </div>
+
+
+
+
+
+
+
+<!-- - - - - - 
+  #TOP RIGHT 
+- - - - - - - -->
+  <div id='search_nav'>
+    <input type='search' ng-model='search' placeholder="&#xF002;">
+  </div>
+  <div id="top_nav_right">
+    <a ng-controller='LoginCtrl' ng-click="submitLogin($event)" id='loginBtn'>L O G I N</a><br>
+    <div id="profile_circle_profile">
+      <!-- makes selectedPerson same as user -->
+      <span><img ng-click="selectedPerson = list[userID]" src="{{ userPicture }}" id='sidebar-toggle-right'></span> 
+    </div>
+<!-- ACCOUNT INFO -->
+    <div class='sidebar-open-right' id='right'>
+      <h1>Edit Profile</h1>
+      <div id='editField'>
+        <h2>Role</h2>
+        <p editable-textarea="list[userID].role" e-rows='1' e-cols='60' e-maxlength="140">{{ list[userID].role }}</p>
+      </div>
+      <div id='editField'>
+        <h2>Bio</h2>
+        <p editable-textarea="list[userID].bio" e-rows='3' e-cols='60' e-maxlength="140">{{ list[userID].bio }}</p>
+      </div>
+      <div id='editField'>
+        <h2>Website</h2>
+        <p editable-text="list[userID].link">{{ list[userID].link }}</p>
+      </div>
+      <div id='editField'>
+        <h2>Picture Link</h2>
+        <p editable-text="list[userID].picture">{{ list[userID].picture }}</p>
+      </div>
+      <div id='editField'>
+        <h2>Searchable Tags</h2>
+      </div>
+        <div class='tagBox'>
+          <p ng-repeat="tag in list[userID].votes | object2Array | orderBy:'value':true">{{ tag.tagName }},&nbsp; </p>
+<!-- INPUT TAG -->
+          <form ng-submit="tagCreate(tagFromView, selectedPerson, userID)" id='tagCreateForm'>
+            <input class='tagName' type='text' name='tagFromView' placeholder='Create new tag' ng-model="tagFromView">
+            <button type='submit'class='btn btn-xs tagBtns' id='submitBtn' >create</button>
+          </form>
+        </div>
+    </div>
+  </div>
+</div>
+<br>
+
+
+
+
+
+<!-- Main Section -->
+<div class="col" id="center">
+<!-- Banner -->
+<section class='banner'>
+  <h1>Utah Valley's Hottest 100</h1>
+  <input class="hidden-xs mar30b" type='search' ng-model='search' placeholder="search criteria" autofocus>
+  <div class='actions'>
+    <button class='btn btn-default clear'>
+      <p>submit a friend</p>
+    </button>
+  </div>
+</section>
+
+
+
+
+<!-- Main List -->
+<ul id = 'makeCenter'>
+
+  <li class="item" ng-click="setItem(item, 0)" ng-repeat="item in list | orderByPriority | orderBy:'overallVotes.value':true| orderBy:myOrder:myOrderReverse | filter: sortField : true | filter: search || property:'tags':search:undefined:true | limitTo: 100">
+    <img ng-src="{{item.image}}" ng-mouseover='showOverall(item, $event)'> 
+
+    <div class="item-info">
+      <p class="fr txt-primary f700">{{item.overallVotes.value}}</p>
+      <p class="fl item-title">{{item.name}}</p>
+   
+    </div> 
+  </li>
+</ul>
+
+<div id="list-container" class="container" >
+    <div class="mix category-1 card post item" data-myorder="{{$index}}" ng-click="setItem(item, 0)" ng-repeat="item in list | orderBy:'overallVotes.value':true| orderBy:myOrder:myOrderReverse | filter: sortField : true | filter: search || property:'tags':search:undefined:true | limitTo: 100" on-finish-render ng-cloak >
+        <div class="col-sm-3 hidden-xs noPadding-left">
+            <div class="chart mix-info item-info">
+                <p class="ng-binding">
+                    {{item.overallVotes.value}}
+                    
+                </p>
+            </div>
+
+            <div class="pagePreview">
+                <a class="ng-binding" target="_blank"><img alt="" ng-src="{{item.picture}}" class=
+                "img-responsive img-mobile" style = "min-width 189px; min-height: 189px; max-width 189px; max-height: 189px" src="{{item.picture}}"></a>
+            </div>
+        </div>
+
+        <div class="col-xs-8 col-sm-6 col-lg-7">
+            <h2><a target="_blank" class="ng-binding mix-title">{{item.fullName}}</a></h2>
+
+            <h4 class="ng-binding">{{item.bio}}</h4>
+            <a class="tweet-this-button btn btn-primary" ng-href="https://twitter.com/intent/tweet?url=https://productbuzz.co&amp;via=productbuzzHQ&amp;hashtags=redditmade&amp;text=redditmade - Crowdfunding projects backed by Reddit community - Buzz: 2472 on" href="https://twitter.com/intent/tweet?url=https://productbuzz.co&amp;via=productbuzzHQ&amp;hashtags=redditmade&amp;text=redditmade - Crowdfunding projects backed by Reddit community - Buzz: 2472 on">share the buzz</a>
+        </div>
+
+        <div class="col-xs-4 col-sm-3 col-lg-2 offsetTop">
+            <p class="text-left buzz showUpdate ng-binding"><img alt=""
+            class="img-responsive rating img-mobile" src=
+            "images/bee.png"> {{post.buzz}}{{$index+25}}</p>
+
+            <p class="text-left hot showUpdate ng-binding"><img alt=""
+            class="img-responsive rating trend img-mobile" src=
+            "images/fire.png">
+            {{post.buzz/(post.alive/60/60) | number:0}}{{$index+37}}°</p>
+
+            <p class="text-left votes showUpdate ng-binding"><img alt=""
+            class="img-responsive rating thumb img-mobile" src=
+            "images/thumbs.png"> {{post.votes}}{{$index+75}}</p>
+        </div>
+    </div>
+</div>
+<script src="../scripts/filter-page.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- - - - - - ->
+  #MODAL
+< - - - - - - -->
+  <div class='modal fade' id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+<!-- LOGIN MODAL -->
+      <div class="modal-login model-open-up" ng-controller='LoginCtrl' >
+        <h1>You need to be logged in to do that</h1>
+        <img ng-click='submitLogin() 'src='../images/login_1.png'/>
+        <a ng-click="loginPrompt()"> no thanks</a>
+      </div>
+
+<!-- MODAL BODY -->
+      <div class="modal-body model-open-up">
+        <i class="fa fa-times-circle icon_large" id='leaveModal' ng-click="cancel()"></i>
+          
+        <div class="item-modal">
+          <section>
+              <img src="{{ selectedItem.image }}">
+          </section>
+
+          <section class="pad10b">
+
+            <div class="item-modal-info">
+              <h1 class="pad5b"><span class="txt-orange f700 center">{{ selectedItem.overallVotes.value }}</span>&nbsp;<i class="fa fa-bolt f18 txt-lightgray"></i>&nbsp;{{ selectedItem.name }}</h1>
+              <p class="pad20b txt-grayLight">{{ selectedItem.tagline }}</p>
+              <button class="btn-block bg-primary txt-white" ng-click='upVoteOverall(selectedItem, userID)'>UP VOTE</button>
+            </div>
+
+          </section>
+
+          <!-- #SOCIAL -->
+          <div class="word-divider">
+            <span>social</span>
+          </div>
+
+          <section class="row item-modal-social-icons">
+
+            <div class="col-xs-6">
+              <i class="fa fa-facebook-square f18 txt-grayLightest opacity7"><span class="txt-orange f700">&nbsp;{{ selectedItem.social.facebookScore }}</span></i>
+            </div>
+
+            <div class="col-xs-6">
+              <i class="fa fa-twitter-square f18 txt-grayLightest opacity7"><span class="txt-orange f700">&nbsp;{{ selectedItem.social.twitterScore }}</i>
+            </div>
+          </section>
+
+          <section>
+           <ul class="additional-links">
+            <li ng-repeat="link in selectedItem.social.additionalLinks | object2Array" on-finish-render>
+              <a class="border-primary txt-grayLight" href="{{ link.link }}" target="_blank"> {{ link.name }} </a>
+            </li>
+          </ul>
+        </section>
+        
+
+          <div class="fb-comments" data-href="http://www.openapparatus.com/{{selectedItem.guid}}" data-numposts="5" data-colorscheme="light"></div>
+
+<!-- MODAL-FOOTER DOESN'T DISPLAY ANYTHING BUT IS REQUIRED ??? 
+        <div class="modal-footer">
+        </div> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+<!-- CREATE -->
+  
+<!-- SIGNUP -->
+<!-- SUBMIT PROFILE -->
+  <div class='signup'>
+   <a ng-click="callCreateModal($event)" id='createBtn'><h1>Nominate a Startup</h1></a>
+<!-- testing for URL Parameters      {{param}} test -->
+  </div>
+  <script src='/scripts/main.js'></script>
+
+</div>

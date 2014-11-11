@@ -1,0 +1,94 @@
+<div class='modal fade' id="modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+<!-- MODAL HEADER -->
+      <!-- <div class="modal-header">
+        <h4 class="modal-title">{{selectedPerson.firstName}} {{selectedPerson.lastName}} </h4>
+      </div> -->
+<!-- LOGIN MODAL -->
+      <div class="modal-login model-open-up" ng-controller='LoginCtrl' >
+        <h1>You need to be logged in to do that</h1>
+        <img ng-click='submitLogin() 'src='../images/login_1.png'/>
+        <a ng-click="loginPrompt()"> no thanks</a>
+      </div>
+<!-- MODAL BODY -->
+      <div class="modal-body model-open-up">
+        <i class="fa fa-times-circle icon_large" id='leaveModal' ng-click="cancel()"></i>
+        <div class="entry" id="profile">
+          <div class="col" id="center_left">
+            <div id="profile_circle">
+              <img src="{{selectedPerson.picture}}">
+            </div>
+            <h1> {{selectedPerson.fullName}}</h1>
+              <p id='bio'>{{ selectedPerson.bio }}</p>
+<!-- OVERALL VOTE -->
+            <div class='outerRank'>
+              <ul>
+                <li id='tag'>
+                  <div class='tagName' id='overallBar'>
+                    <progressbar class="progress-striped active" value=" selectedPerson.overallVotes.value " type="info"><i>{{ selectedPerson.role }}</i></progressbar>
+                  </div>
+                  <div class='tagBtns'>
+                    <button class='btn' id='buttonLeft' ng-click='downVoteOverall(selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-left"></button>
+                    <h3>{{ selectedPerson.overallVotes.value }}</h3>
+                    <button class='btn' id='buttonRight' ng-click='upVoteOverall(selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-right"></button>
+                  </div>
+                </li>
+<!-- TAG VOTE -->
+                <li id='tag' ng-repeat="tag in selectedPerson.votes | object2Array | orderBy:'value':true | limitTo: 3">
+                  <div class='tagName'>
+                    <p>{{ tag.tagName }}</p>
+                    <progressbar class="progress-striped active" value=" tag.value " type="info"><i></i></progressbar>
+                  </div>
+                  <div class='tagBtns'>
+                    <button class='btn' id='buttonLeft' ng-click='downVote(tag.tagName, selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-left"></button>
+                    <h3 id='tagValue'>{{ tag.value }}</h3>
+                    <button class='btn' id='buttonRight' ng-click='upVote(tag.tagName, selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-right"></button>
+                  </div>
+                </li>
+              </ul>
+<!-- TAG BOX-->
+              <div class='tagBox'>
+                <span>Other Tags&nbsp;</span><i>(click to vote up)</i>:&nbsp;<p ng-repeat="tag in selectedPerson.votes | object2Array | orderBy:'value':true" ng-click='upVote(tag.tagName, selectedPerson, userID)'>{{ tag.tagName }},&nbsp;</p>
+<!-- INPUT TAG -->
+                <form ng-submit="tagCreate(tagFromView, selectedPerson, userID)" id='tagCreateForm'>
+                  <input class='tagName' type='text' name='tagFromView' placeholder='Create new tag' ng-model="tagFromView">
+                  <button type='submit'class='btn btn-xs tagBtns' id='submitBtnMinimal' >create</button>
+                </form>
+              </div>
+            </div>
+          </div><!-- /#center-left -->
+<!-- COMMENT BOX -->
+          <div class="col" id="center_right">
+            <h2>What is {{ selectedPerson.firstName }} great at?</h2>
+            <em>Be sure to mention their strengths or other key words so our super fancy algorithm can label them as influential in those areas.</em>
+<!-- SUGGESTION INPUT -->
+            <div class='suggestInput'>
+              <form ng-submit="commentCreate(commentFromView, selectedPerson, userID)" id='commentCreateForm'>
+                <input class='tagName'type='text' name="commentFromView" placeholder="Comment" ng-model="commentFromView">
+                <button type='submit' class='btn btn-xs tagBtns' id='submitBtn' >submit</button>
+              </form>
+            </div>
+<!-- SUGGESTION DISPLAY -->
+            <div class='commentSection'>
+              <div class='comments' ng-repeat="comment in selectedPerson.comments | object2Array | orderBy : 'value':true">
+                <div class='comment'>
+                  <img src='https://graph.facebook.com/{{ comment.user }}/picture?width=25&height=25'>
+                  <p>{{ comment.comment }}</p>
+                </div>
+                <div class='commentBtns'>
+                  <button class='btn' id='commentUp'ng-click='upVoteComment(comment, selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-up"></span></button>
+                  <button class='btn' id='commentDown'ng-click='downVoteComment(comment, selectedPerson, userID)'><span class="glyphicon glyphicon-chevron-down"></span></button>
+                  <h3>{{ comment.value }}</h3>
+                </div>  
+              </div>
+            </div>
+          </div><!--./#center_right -->
+        </div><!-- /.entry#profile -->
+<!-- MODAL-FOOTER DOESN'T DISPLAY ANYTHING BUT IS REQUIRED ??? 
+        <div class="modal-footer">
+        </div> -->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

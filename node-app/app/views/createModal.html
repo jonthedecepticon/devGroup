@@ -1,0 +1,35 @@
+<div class='modal fade' id="createModal">
+  <div class="modal-dialog createModal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <i class="fa fa-times-circle icon_large" id='leaveModal' ng-click="cancelCreateModal()"></i>
+        <form name="nominateForm" ng-controller='LoginCtrl' class="" ng-submit="createItem(itemNameFromView, itemTagLineFromView, itemWebsiteFromView, itemImageFromView, contactNameFromView, contactEmailFromView, contactPhoneFromView)">
+
+            <h2>Nominate a Startup</h2>
+            
+            <input class='col-xs-12' name="itemNameFromView" placeholder="Company Name" ng-model="itemNameFromView" required>
+
+            <input class='col-xs-12' name="itemTagLineFromView" placeholder="Tagline" ng-model="itemTagLineFromView" required>
+
+            <input class='col-xs-12' name="itemWebsiteFromView" placeholder="Website URL" ng-model="itemWebsiteFromView">
+
+            <input class='col-xs-12' name="itemImageFromView" placeholder="Company Logo URL" ng-model="itemImageFromView" required>
+
+            <input class='col-xs-12' name="contactNameFromView" placeholder="Contact Name" ng-model="contactNameFromView" required>
+
+            <input class='col-xs-12' name="contactEmailFromView" placeholder="Contact Email" ng-model="contactEmailFromView" required>
+
+            <input class='col-xs-12' name="contactPhoneFromView" placeholder="Contact Phone" ng-model="contactPhoneFromView">
+            
+            <span class="error" ng-show="nominateForm.input.$error.required">Required!</span><br>
+
+            <button type='submit'class='btn btn-xs' id='submitBtn'> Submit </button>
+
+        </form>
+          
+        
+
+      </div><!-- /. modal-body -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
