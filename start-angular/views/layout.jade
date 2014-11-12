@@ -1,0 +1,23 @@
+doctype html
+html(data-ng-app=angularApp)
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+
+    title #{title} - Starter Template for Bootstrap
+
+    link(href='/css/lib/font-awesome.min.css?v=#{cacheBuster}', rel='stylesheet')
+    link(href='/css/lib/animate.css?v=#{cacheBuster}', rel='stylesheet')
+
+    link(href='/css/styles.css?v=#{cacheBuster}', rel='stylesheet')
+
+  body
+    #wrap
+      include partials/navigation
+      .container(data-ng-view)
+        include partials/flash
+        block content
+    include partials/footer
