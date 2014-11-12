@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-=======
 # ----------------------------
 # Node
 # ----------------------------
 
 /secrets.js
 
->>>>>>> 9f09a5fa3ba6fe89b173a1c8587103d399922e25
 lib-cov
 *.seed
 *.log
@@ -15,26 +12,10 @@ lib-cov
 *.out
 *.pid
 *.gz
-<<<<<<< HEAD
-*.swp
-=======
->>>>>>> 9f09a5fa3ba6fe89b173a1c8587103d399922e25
 
 pids
 logs
 results
-<<<<<<< HEAD
-tmp
-
-npm-debug.log
-node_modules
-.idea
-*.iml
-.DS_Store
-Thumbs.db
-
-public/vendor
-=======
 
 npm-debug.log
 node_modules
@@ -100,4 +81,3 @@ nbproject
 # Tests
 ############################
 testApp
->>>>>>> 9f09a5fa3ba6fe89b173a1c8587103d399922e25
