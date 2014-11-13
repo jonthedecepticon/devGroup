@@ -1,5 +1,5 @@
 
-Hackathon Starter Angular (https://david-dm.org/sahat/hackathon-starter)
+Hackathon Starter Angular [![Dependency Status](https://david-dm.org/squeezeday/hackathon-starter-angular.png?theme=shields.io)](https://david-dm.org/sahat/hackathon-starter)
 =================
 A boilerplate for **Node.js** web applications - with Angular JS.
 

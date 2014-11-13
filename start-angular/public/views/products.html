@@ -1,0 +1,33 @@
+<div class="createProductBtn">
+			<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
+		</div>
+	
+<!-- <div class="row"> -->
+	<div class="col-md-6">
+		<div id="panle1" class="panel1">
+			<div class="top-panel1">
+<!-- LIST OF NEW POLLS -->
+				<h1 id="newTitle">Trending Products</h1>
+			</div>
+			<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
+			<div class="mainProducts"ng-repeat="product in products | filter:query">
+				{{product.productTitle}}
+				<!-- <div ng-repeat="productOption in product.productOptions">
+					{{productOption.text}}
+				 </div>  -->
+
+				<!-- TAKE POLL BTN -->
+				<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
+			</div>
+		</div>
+	</div>
+		<div class="col-md-6">
+		<div id="panel2" class="panel2">
+			<div class="top-panel2">
+				<h1 id="completeTitle">Current Product</h1>
+			</div>
+	</div>
+</div>
+
+
+</div>

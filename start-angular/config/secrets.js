@@ -16,8 +16,8 @@ module.exports = {
   },
 
   facebook: {
-    clientID: '647578028693859',
-    clientSecret: '46d50a8a8fee42545b101756595ec4da',
+    clientID: 'Your App ID',
+    clientSecret: 'Your App Secret',
     callbackURL: '/auth/facebook/callback',
     passReqToCallback: true
   },
@@ -30,16 +30,15 @@ module.exports = {
   },
 
   twitter: {
-    consumerKey: 'yBndeFPtSoCyoww5qZET1k1iq',
-    consumerSecret: 'b2gulvtzI1Pj0YdkRpFOKxuaHM4tNJiJm4WnEzOQrbp4YPhyMy',
+    consumerKey: 'Your Consumer Key',
+    consumerSecret: 'Your Consumer Secret',
     callbackURL: '/auth/twitter/callback',
     passReqToCallback: true
   },
 
   google: {
-    clientID: '417859851764-9kejrjpbclq5r00civomhl3ohso73i42.apps.googleusercontent.com',
-    clientSecret: 'y8UM2jNdgit0ppPRsgbqqygb',
-
+    clientID: 'Your Client ID',
+    clientSecret: 'Your Client Secret',
     callbackURL: '/auth/google/callback',
     passReqToCallback: true
   },
