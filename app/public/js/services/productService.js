@@ -20,6 +20,7 @@ app.service('productService', function($http, $q) {
 		})
 	}
 
+	// gets a product from the db to display
 	this.getProduct = function(id) {
 	return $http({
 		method: 'GET',
