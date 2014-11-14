@@ -1,15 +1,25 @@
 <!-- POLL QUESTION -->
 
-<div id="productTitle" class="productTitle">
+<div id="productTitle">
 	
-	<h1>{{singleProduct.title}}</h1>
-	<div ng-hide="product.userVoted">
+	<h1>{{singleProduct.productTitle}}</h1>
+	<br />
+	<br />
+	<h3>Product Picture Here{{singleProduct.productPic}}</h3>
+	<br />
+	<h3>Current Price:
+		<br/>
+		${{singleProduct.startingPrice}}</h3>
+	<br />
+	<h3>Drop by:
 		<br />
+	${{singleProduct.reductionAmount}}</h3>
+	<br />
+	<h3>Next Drop:
 		<br />
-		<!--  POLL OPTIONS -->
-		<div id="optionBtn" ng-repeat="option in singleProduct.productOptions">
-			<!-- OPTION CHOSEN -->
-			<div  class="btn btn-primary">{{option.text}}</button>
-		</div>
-	</div>
+		{{singleProduct.peopleThreshold}} Orders</h3>
+
+	
 </div>
+
+
