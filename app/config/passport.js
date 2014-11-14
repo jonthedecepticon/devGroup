@@ -1,7 +1,7 @@
 var passport = require('passport');
 // var LocalStrategy = require('passport-local').Strategy;
-// var OAuthStrategy = require('passport-oauth').OAuthStrategy;
-// var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+var OAuthStrategy = require('passport-oauth').OAuthStrategy;
+var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var TwitterStrategy = require('passport-twitter').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;

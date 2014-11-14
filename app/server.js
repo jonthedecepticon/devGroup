@@ -11,7 +11,7 @@ var MongoStore = require('connect-mongo')(express);
 var bodyParser = require('body-parser');
 var cors = require('cors');
 var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
+var Twit = require('twit');
 
 /**
  * API keys + Passport configuration.
@@ -62,52 +62,6 @@ var Product = require('./server-assets/product/productModel');
 var routes = require('./server-assets/database');
 var User = require('./server-assets/user/userModel');
 
-
-
-var user = {};
-// passport.use('facebook', new FacebookStrategy({
-// 	clientID: process.env.FACEBOOK_APP_ID || '380054328825864',
-//  clientSecret: process.env.FACEBOOK_SECRET_ID || '348682659a6741a449c30aa77ee8a3aa',
-//  callbackURL: '/auth/facebook/callback'
-// }, function(accessToken, refreshToken, profile, done) {
-// 		process.nextTick(function(){
-// 			User.findOne({facebookId: profile.id}, function(err, user){
-// 			if(err) {console.log(err);}
-// 			if(!err && user != null){
-// 					done(null, user);
-// 				} else {
-// 					var newUser = new User();
-// 					newUser.userName = profile._json.name;
-// 			    newUser.facebookId = profile.id;
-// 			    newUser.accountCreated = profile._json.updated_time;
-// 			    newUser.save(function (err) {
-// 			    	if(err){
-// 			    	  console.log(err);
-// 			    	} else {
-// 			    		done(null, newUser);
-// 			    	}
-// 			    });
-// 				}
-// 			}); 
-// 		});
-// }));
-// passport.serializeUser(function(user, done) {
-// console.log('serializing', user)
-// done(null, user.id);
-// });
-// passport.deserializeUser(function(id, done) {
-// 	User.findById(id).exec(function(err, user){
-// 		done(err, user);
-// 	})
-// });
-// app.get('/auth/facebook',
-// 	passport.authenticate('facebook'));
-// app.get('/auth/facebook/callback',
-// 	passport.authenticate('facebook', {
-//  failureRedirect: '/#/login',
-//  successRedirect: '/#/products'
-// }));
-
 /**
  * Application routes.
  */
@@ -149,10 +103,10 @@ app.post('/products', requireAuth, routes.create);
 // app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products', failureRedirect: '/login' }));
-// app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
-// app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
-// app.get('/auth/twitter', passport.authenticate('twitter'));
-// app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
+app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
+app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
 
 
 
