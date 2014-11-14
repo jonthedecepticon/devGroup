@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+	<html ng-app="groupDropper">
+	<head><!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+		<title>GroupDropper</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="style/main.css">
+	</head>
+	<body ng-controller="mainControl">
+		<div>
+		<header>
+	<div id="fPTitle">GroupDropper</div>
+<div class="menu" >
+		<ul>
+			<li><a href="/#/products">Home</a></li>
+			<li><a href="/#/profile">My Profile</a></li>
+			<li><a ng-click="fbLogOut()" href="/logout">Log Out</a></li>
+			<!-- <li><a ng-click="fbLogOut()" ng-show="isUserLoggedIn" href="/logout">Log Out</a></li> -->
+			<!-- <li><a ng-show="!isUserLoggedIn" href="/#/login">Log In</a></li> -->
+
+		</ul>
+	</div>
+	</header>
+
+
+	<!-- Add Another Option BUTTON -->
+	<!-- <div class="addCreateBtns">
+		<div class="addBtn">
+			<button class="btn btn-primary"  ng-click="addOption()">Add Option</button>
+		</div> -->
+		<!-- CREATE POLL BUTTON -->
+		<!--  <div ng-show='onHome'>
+		<div class="createProductBtn">
+			<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
+		</div>
+	
+ <div class="row"> -->
+	<!-- <div class="col-md-6">
+		<div id="panle1" class="panel1">
+			<div class="top-panel1">
+
+				<h1 id="newTitle">Trending Products</h1>
+			</div>
+			<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
+			<div class="mainProducts"ng-repeat="product in products | filter:query">
+				<h4>{{product.title}}</h4>
+				<div ng-repeat="productOption in product.productOptions">
+					{{productOption.text}}
+				 </div> 
+
+				
+				<button id="takeProductBtn" ng-show="!product.productTaken" ng-click="takeProduct(product)" class="btn btn-primary">View Product</button>
+				<button ng-show="product.productTaken" ng-click="viewStats(product)" class="btn btn-primary">View Stats</button>
+			</div>
+		</div>
+	</div>
+		<div class="col-md-6">
+		<div id="panel2" class="panel2">
+			<div class="top-panel2">
+				<h1 id="completeTitle">Current Product</h1>
+			</div>
+	</div>
+</div>
+
+
+</div>  -->
+	<div ng-view></div>
+
+
+<!-- Vendors -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular-cookies.min.js"></script>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+
+<!-- app.js always at the top -->
+<script src="js/app.js"></script>
+<!-- Controllers -->
+<script src="js/controllers/profileControl.js"></script>
+<script src="js/controllers/productControl.js"></script>
+<script src="js/controllers/mainControl.js"></script>
+<script src="js/controllers/loginControl.js"></script>
+<script src="js/controllers/createControl.js"></script>
+<!-- Services -->
+<script src="js/services/userService.js"></script>
+<script src="js/services/productService.js"></script>
+
+<!--Directives -->
+
+
+</body>
+
+</html>
