@@ -1,4 +1,10 @@
-var app = angular.module('groupDropper', ['ngRoute', 'ngResource', 'ngCookies'])
+var app = angular.module('groupDropper', ['ngRoute', 'ngResource', 'ngCookies', 'angulike'])
+
+app.run([
+	'$rootScope', function($rootScope) {
+          $rootScope.facebookAppId = '[FacebookAppId]';
+      }
+	])
 
 // app.run(function (userService, $rootScope, $location) {
 // 		$rootScope.$on("$routeChangeStart", function () {

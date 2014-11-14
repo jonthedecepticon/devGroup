@@ -178,8 +178,14 @@ h1 {
 	border-radius: 5px;
 	border: solid black 1.0px;
 	display: inline-block;
-	
 
+}
+
+.socialContainer {
+	height: 100%;
+	width: 100%;
+	float: left;
+	display: inline-block;
 }
 
 #searchProducts {
