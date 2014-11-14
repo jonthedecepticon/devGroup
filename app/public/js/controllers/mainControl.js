@@ -15,20 +15,20 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 			}
 			$scope.getProducts();
 		})
-	}
+	};
 
 	// $scope.updateUser();
 
 	$scope.products = [];
 
-	$scope.product = {
-		productTitle: '',
-		startingPrice: '',
-		minimumPrice: '',
-		reductionAmount: '',
-		peopleThreshold: '',
-		productPic: ''
-	};
+	// $scope.product = {
+	// 	productTitle: '',
+	// 	startingPrice: '',
+	// 	minimumPrice: '',
+	// 	reductionAmount: '',
+	// 	peopleThreshold: '',
+	// 	productPic: ''
+	// };
 
 	// $scope.addOption = function(){
 	// 	$scope.product.productOptions.push({text: ''})
@@ -41,7 +41,7 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 
 	$scope.getProducts = function(products){
 		
-		$scope.limit = 0;
+		// $scope.limit = 0;
 		productService.getProducts().then(function(products){
 			$scope.products = products;
 			// for(var i = 0; i < $scope.products.length; i++){
@@ -61,32 +61,40 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 			// 	}
 			// }
 		});
-	}
-$scope.onHome = true;
-$scope.getProducts();
+	};
 
-$scope.createProduct = function(){
-	$scope.onHome = false;
-	$location.path('/create');
+	$scope.getProducts();
 
-}
+	$scope.createProduct = function(){
+		$location.path('/create');
+
+	};
 	
+	// Updates data to display when a product is clicked
 	$scope.viewProduct = function(product){
-		$location.path('/products/' + product._id);	
-	}
+		$location.path('/products/' + product._id);
+		// console.log($scope.products);
+		$scope.getProducts();
+	};
 
 
-$scope.$on('updateUser', function(){
-	$scope.updateUser();
-	
-	
-	console.log('It is updating')
-})
+	$scope.$on('updateUser', function(){
+		$scope.updateUser();
+		console.log('It is updating')
+	});
 
-$scope.fbLogOut = function(){
-	$scope.isUserLoggedIn = false;
-	$location.path('/logout')
-	$scope.onHome = false;
-}
+	$scope.fbLogOut = function(){
+		$scope.isUserLoggedIn = false;
+		$location.path('/logout')
+		$scope.onHome = false;
+	};
+
+
+
+
 
 });
+
+
+
+
