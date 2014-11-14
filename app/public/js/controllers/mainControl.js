@@ -15,7 +15,7 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 			}
 			$scope.getProducts();
 		})
-	}
+	};
 
 	// $scope.updateUser();
 
@@ -61,32 +61,42 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 			// 	}
 			// }
 		});
-	}
-$scope.onHome = true;
-$scope.getProducts();
+	};
 
-$scope.createProduct = function(){
-	$scope.onHome = false;
-	$location.path('/create');
+	$scope.onHome = true;
+	$scope.getProducts();
 
-}
+	$scope.createProduct = function(){
+		$scope.onHome = false;
+		$location.path('/create');
+
+	};
 	
+	// Updates data to display when a product is clicked
 	$scope.viewProduct = function(product){
 		$location.path('/products/' + product._id);	
-	}
+	};
 
 
-$scope.$on('updateUser', function(){
-	$scope.updateUser();
-	
-	
-	console.log('It is updating')
-})
+	$scope.$on('updateUser', function(){
+		$scope.updateUser();
+		
+		
+		console.log('It is updating')
+	});
 
-$scope.fbLogOut = function(){
-	$scope.isUserLoggedIn = false;
-	$location.path('/logout')
-	$scope.onHome = false;
-}
+	$scope.fbLogOut = function(){
+		$scope.isUserLoggedIn = false;
+		$location.path('/logout')
+		$scope.onHome = false;
+	};
+
+
+
+
 
 });
+
+
+
+
