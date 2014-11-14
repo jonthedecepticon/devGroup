@@ -85,7 +85,7 @@ var requireAuth = function(req, res, next) {
 };
 
 app.get('/', routes.index);
-app.get('/products', requireAuth, routes.products);
+app.get('/products', requireAuth, routes.products);  
 app.get('/products/:id', requireAuth, routes.product);
 app.post('/products', requireAuth, routes.create);
 // app.get('/', homeController.index);
