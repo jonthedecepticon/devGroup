@@ -6,7 +6,7 @@ app.service('productService', function($http, $q) {
 			method: 'GET',
 			url: '/products',
 		}).then(function(res){
-			console.log(res.data);
+			// console.log(res.data);
 			return res.data;
 		})
 	}
@@ -20,6 +20,7 @@ app.service('productService', function($http, $q) {
 		})
 	}
 
+	// gets a product from the db to display
 	this.getProduct = function(id) {
 	return $http({
 		method: 'GET',

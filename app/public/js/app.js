@@ -41,7 +41,7 @@ app.config(function($routeProvider, $httpProvider){
 		controller: 'loginControl'
 	})
 	.when('/products/:productId', {
-		templateUrl: 'views/product.html',
+		templateUrl: 'views/products.html', // displays product data on same page
 		controller: 'productControl',
 		resolve: {
 			product: function(productService, $route) {

@@ -1,17 +1,26 @@
 <div class="createProductBtn">
 	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
 </div>
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> af55d012bcab4ef357d7adbd4ea1f23a7bc0cfe7
 <!-- <div class="row"> -->
 <div class="col-md-6">
 	<div id="panle1" class="panel1">
 		<div class="top-panel1">
+<<<<<<< HEAD
 			<!-- LIST OF NEW POLLS -->
+=======
+<!-- LIST OF NEW POLLS -->
+>>>>>>> af55d012bcab4ef357d7adbd4ea1f23a7bc0cfe7
 			<h1 id="newTitle">Trending Products</h1>
 		</div>
 		<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
 		<div class="mainProducts"ng-repeat="product in products | filter:query">
 			{{product.productTitle}}
+<<<<<<< HEAD
 			<!-- View Product BTN -->
 			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
 <br />
@@ -37,6 +46,14 @@
             </div>
         </div>
 
+=======
+			<!-- <div ng-repeat="productOption in product.productOptions">
+				{{productOption.text}}
+			 </div>  -->
+
+			<!-- TAKE POLL BTN -->
+			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
+>>>>>>> af55d012bcab4ef357d7adbd4ea1f23a7bc0cfe7
 		</div>
 	</div>
 </div>
@@ -45,8 +62,33 @@
 		<div class="top-panel2">
 			<h1 id="completeTitle">Current Product</h1>
 		</div>
+<<<<<<< HEAD
+=======
+		<div id="productTitle">
+			<h1>{{singleProduct.productTitle}}</h1>
+			<br />
+			<br />
+			<h3>Product Picture Here{{singleProduct.productPic}}</h3>
+			<br />
+			<h3>Current Price:
+				<br/>
+				${{singleProduct.startingPrice}}
+			</h3>
+			<br />
+			<h3>Drop by:
+				<br />
+				${{singleProduct.reductionAmount}}
+			</h3>
+			<br />
+			<h3>Next Drop:
+				<br />
+				{{singleProduct.peopleThreshold}} Orders
+			</h3>
+		</div>
+>>>>>>> af55d012bcab4ef357d7adbd4ea1f23a7bc0cfe7
 	</div>
 </div>
 
 
-</div>
+
+

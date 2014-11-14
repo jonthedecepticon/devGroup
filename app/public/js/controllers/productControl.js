@@ -18,12 +18,18 @@ app.controller('productControl', function(product, $scope, $location, $routePara
 
 	$scope.singleProduct = product.data;
 
-
-
+	// gets a products from productService
 	$scope.getProduct = function(id) {
 		productService.getProduct(id).then(function(){
 		})
 	};
 
 
+
+
+
 });
+
+
+
+
