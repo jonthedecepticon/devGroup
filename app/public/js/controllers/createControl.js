@@ -2,7 +2,7 @@ var app = angular.module('groupDropper');
 
 app.controller('createControl', function($rootScope, $scope, productService, $location, userService){
 
-$scope.product = {
+	$scope.product = {
 		productTitle: '',
 		startingPrice: '',
 		minimumPrice: '',
@@ -11,18 +11,25 @@ $scope.product = {
 		productPic: ''
 	};
 
-$scope.createProduct = function() {
-	
+	$scope.createProduct = function() {
 		productService.addProduct($scope.product)
 		$scope.product = {
-		productTitle: '',
-		startingPrice: '',
-		minimumPrice: '',
-		reductionAmount: '',
-		peopleThreshold: '',
-		productPic: ''
-	};
+			productTitle: '',
+			startingPrice: '',
+			minimumPrice: '',
+			reductionAmount: '',
+			peopleThreshold: '',
+			productPic: ''
+		};
 		$location.path('/products');
 	}
 
-	});
+
+
+
+
+});
+
+
+
+
