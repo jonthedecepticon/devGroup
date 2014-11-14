@@ -2,7 +2,7 @@
 # Node
 # ----------------------------
 
-/secrets.js
+/config/secrets.js
 
 lib-cov
 *.seed
