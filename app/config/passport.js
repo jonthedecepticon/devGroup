@@ -33,6 +33,8 @@ passport.deserializeUser(function(id, done) {
 //   });
 // }));
 
+
+
 passport.use(new FacebookStrategy(secrets.facebook, function (req, accessToken, refreshToken, profile, done) {
   if (req.user) {
     User.findById(req.user.id, function(err, user) {

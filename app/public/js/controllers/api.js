@@ -1,3 +1,4 @@
+//Controller added by Jon -- CURRENTLY NOT DOING ANYTHING
 var secrets = require('../config/secrets');
 var User = require('../models/User');
 var querystring = require('querystring');
