@@ -104,9 +104,9 @@ app.post('/products', requireAuth, routes.create);
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products', failureRedirect: '/login' }));
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
-app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/', failureRedirect: '/login' }));
+app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/#/products', failureRedirect: '/login' }));
 app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/', failureRedirect: '/login' }));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/#/products', failureRedirect: '/login' }));
 
 
 

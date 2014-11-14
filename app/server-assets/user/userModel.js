@@ -16,8 +16,7 @@
 // })
 
 // module.exports = mongoose.model("User", User);
-
-//-------------mess with this once authenticated w/ FB and Passport-local-----------------
+//------------------------------------------------------
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
