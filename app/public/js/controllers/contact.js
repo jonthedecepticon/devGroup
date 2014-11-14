@@ -1,3 +1,5 @@
+//Controller added by Jon -- CURRENTLY NOT DOING ANYTHING
+
 var secrets = require('../config/secrets');
 var sendgrid  = require('sendgrid')(secrets.sendgrid.user, secrets.sendgrid.password);
 

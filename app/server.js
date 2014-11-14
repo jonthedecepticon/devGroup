@@ -22,7 +22,7 @@ var passportConf = require('./config/passport');
 /**
  * Mongoose configuration.
  */
-mongoose.connect(secrets.db);
+mongoose.connect(secrets.db, 'GroupDropper');
 mongoose.connection.on('error', function() {
   console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
 });
@@ -108,7 +108,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { successRedire
 app.get('/auth/twitter', passport.authenticate('twitter'));
 app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/#/products', failureRedirect: '/login' }));
 
-
+ 
 
 app.listen(app.get('port'), function() {
   console.log('✔ Express server listening on port ' + app.get('port'));

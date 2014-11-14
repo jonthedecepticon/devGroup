@@ -1,3 +1,6 @@
+//Controller added by Jon -- CURRENTLY NOT DOING ANYTHING
+
+
 var Item = require('../models/Item');
 var _ = require('underscore');
 

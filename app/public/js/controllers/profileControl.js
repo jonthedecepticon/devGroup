@@ -1,6 +1,6 @@
-var app = angular.module('groupDropper');
+// var app = angular.module('groupDropper');
 
-app.controller('profileControl', function($location, authService){
+// app.controller('profileControl', function($location, authService){
 
 
-});
+// });

@@ -1,3 +1,6 @@
+//Controller added by Jon -- CURRENTLY NOT DOING ANYTHING
+
+
 var mongoose = require('mongoose');
 var passport = require('passport');
 var _ = require('underscore');
