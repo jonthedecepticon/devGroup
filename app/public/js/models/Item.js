@@ -1,3 +1,5 @@
+//Controller added by Jon -- CURRENTLY NOT DOING ANYTHING
+
 var mongoose = require('mongoose');
 
 var itemSchema = new mongoose.Schema({

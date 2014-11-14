@@ -16,7 +16,6 @@ body {
 
 
 .submitQuestionContainer {
-	/*margin-top: 5px;*/
 	text-align: center;
 }
 
@@ -39,22 +38,18 @@ body {
 #optionClass {
 		text-align: center;
 		display: inline-block;
-
 }
 
 .fa-trash {
 	color: rgba(0, 0, 0, 0.9);
 	padding: 10px;
 	margin-top: 5%;
-
 }
 
 .optionBox {
 	border-radius: 5px;
 	text-align: center;
-	/*margin: 0 0 0% 2%;*/
 	padding: 5px 0;	
-
 }
 
 .optionCreateBtns {
@@ -67,7 +62,6 @@ body {
 }
 
 .inputBoxes{
-	
 	width: 30%;
 	text-align: left;
 }
@@ -96,7 +90,6 @@ body {
 .fa-question-circle {
 	color: rgb(0, 160, 255);
 	font-size: .80em;
-
 }
 
 #fbButton {
@@ -111,14 +104,12 @@ body {
 }
 
 .btn {
-/*margin-top: 10px;*/
 padding-top: 5px;
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
 #viewProductBtn{
 	display: inline-block;
-	/*background-color: #389AF0;*/
 	background-color: rgba(0, 150, 0, 0.8);
 }
 
@@ -134,22 +125,18 @@ padding-top: 5px;
 	background-color: rgba(0, 0, 0, 0.8);
 	text-align: center;
 	padding-top: 5px;
-	border: solid #fff;
-
-  
+	border: solid #fff; 
 }
 
 .top-panel2  {
 	border-radius: 5px;
 	width: 100%;
-/*	height: 50px;*/
 	background-color: rgba(0, 150, 0, 0.8);
 	border-color: #fff;
 	text-align: center;
 	padding-top: 5px;
 	border: solid #fff;
 	margin-top: 7%;
-  
 }
 
 .panel1 {
@@ -161,20 +148,16 @@ padding-top: 5px;
 }
 
 h1 {
-	
 	color: #fff;
 	display: inline-block;
 	margin: 0;
-	
 }
 
 .mainProducts {
 	width: 100%;
 	padding: 5px 0px;
-	/*text-align: center;*/
 	background-color: rgba(255, 255, 255, 0.6);
 	color: #000;
-	/*margin: 10px 0px;*/
 	border-radius: 5px;
 	border: solid black 1.0px;
 	display: inline-block;
@@ -190,7 +173,6 @@ h1 {
 
 #searchProducts {
 	text-align: center;
-
 }
 
 header {
@@ -208,42 +190,33 @@ header {
 	height: 300px;
 	margin: 10% 25% 0 25%;
 	border-radius: 4%;
-
 }
 
 #loginLogo {
-
 	margin-left: 33%;
-	
 	display: inline;
 	font-size: 3.0em;
 	font:bold;
 	color: #fff;
-	/*background-color: #000;*/
 }
 
 .fbBtn {
-
 	display: inline;
 	margin-left: 25%;
 }
 
 #fPTitle {
-	
 	margin-left: 25%;
 	display: inline;
 	font-size: 3.0em;
 	font:bold;
-
 }
 
 .menu {
-  
   font-size: 1.0em;
   width: 100%;
   height: 30px;
   display: inline;
-  
 }
 
 .menu ul{
@@ -255,7 +228,6 @@ header {
   list-style-type: none;
   display: inline;
   margin: 0px 20px 0 20px;
-
 }
 
 .menu ul li a{
@@ -264,7 +236,6 @@ header {
 
 
 #productTitle {
-	
 	color: #fff;
 	background-color: rgba(0, 0, 0, 0.7);
 	text-align: left;
@@ -274,35 +245,6 @@ header {
 	border-radius: 4%;
 }
 
-#optionBtn {
-	margin: 4%;
-	color: blue;
 
 
-}
 
-.statsWindow {
-	margin-top: 3%;
-}
-
-#chartdiv a{
-    font-size: 0!important;
-}
-
-/*BASIC RESULTS (REPLACE WITH AM CHART INFO)*/
-/* body { padding-top: 50px; }
-        .result-table {
-          margin: 20px 0;
-          width: 100%;
-          border-collapse: collapse;
-        }
-        .result-table td { padding: 8px; }
-        .result-table > tbody > tr > td:first-child {
-          width: 25%;
-          max-width: 300px;
-          text-align: right;
-        }
-        .result-table td table {
-          background-color: lightblue;
-          text-align: right;
-        }*/

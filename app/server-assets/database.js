@@ -1,10 +1,18 @@
-
+/**
+ * Module dependencies.
+ */
 var mongoose = require('mongoose');
-var db = mongoose.createConnection('localhost', 'groupDropper');
 var Product = require('./product/productModel');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var User = require('./user/userModel');
+
+/**
+ * Mongoose configuration.
+ */
+mongoose.connection.on('error', function() {
+  console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
+});
 module.exports.index = function(req, res) {
   res.render('index', {title: 'Products'});
 };

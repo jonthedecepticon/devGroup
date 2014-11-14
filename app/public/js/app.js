@@ -2,7 +2,7 @@ var app = angular.module('groupDropper', ['ngRoute', 'ngResource', 'ngCookies', 
 
 app.run([
 	'$rootScope', function($rootScope) {
-          $rootScope.facebookAppId = '[FacebookAppId]';
+          $rootScope.facebookAppId = '653358958106368';
       }
 	])
 
