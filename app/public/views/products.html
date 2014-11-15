@@ -2,47 +2,19 @@
 	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
 </div>
 
-
-<!-- <div class="row"> -->
 <div class="col-md-6">
 	<div id="panle1" class="panel1">
-		<div class="top-panel1">
-
-<!-- LIST OF PRODUCTS -->
-
+		<div class="top-panel1"><!-- LIST OF PRODUCTS -->
 			<h1 id="newTitle">Trending Products</h1>
 		</div>
 		<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
 		<div class="mainProducts"ng-repeat="product in products | filter:query">
 			{{product.productTitle}}
-		<!-- View Product BTN -->
 			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
-<br />
-<br />
-			<!-- <div class="socialContainer">		
-					<div fb-like></div>		
-					<div tweet="myModel.Name"></div>			
-					<div google-plus></div>
-					<div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
-			</div> -->
-			 <div class="socialContainer">
-            <div class="fb1">
-                <div fb-like></div>
-            </div>
-            <div class="twit1">
-                <div tweet="myModel.Name"></div>
-            </div>
-            <div class="google1">
-                <div google-plus></div>
-            </div>
-            <div class="pin1">
-                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
-            </div>
+			<br />
+			<br />
         </div>
-
 			<!-- VIEW PRODUCT BTN -->
-			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
-		</div>
 	</div>
 </div>
 <div class="col-md-6">
