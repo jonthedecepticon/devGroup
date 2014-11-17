@@ -1,4 +1,7 @@
-ip-mean-stack
-=============
+DevMounta.in Group Final Project
 
-full mean stack for ip
+Jon 
+Larry
+David
+Skyler
+Bryson
