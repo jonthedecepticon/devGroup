@@ -1,3 +1,4 @@
+'use strict';
 var Item = require('../models/Item');
 var _ = require('underscore');
 
