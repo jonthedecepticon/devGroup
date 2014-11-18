@@ -2,23 +2,22 @@ var app = angular.module('groupDropper');
 
 app.controller('mainControl', function($rootScope, $scope, productService, $location, userService){
 
-	$scope.myModel ={
-		Name: 'GroupDropper',
-		ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
-	};
-	// https://www.facebook.com/groupdropper/photos/a.1506031743015826.1073741825.1506031383015862/1506031749682492/?type=1&source=11
+	// $scope.myModel ={
+	// 	Name: 'GroupDropper',
+	// 	ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
+	// };
 
-	$scope.updateUser = function(){
-		userService.getUser().then(function(data){
-			$scope.user = data.data;
-			if($scope.user){
-				$scope.isUserLoggedIn = true;
-			} else {
-				$scope.isUserLoggedIn = false;
-			}
-			$scope.getProducts();
-		})
-	};
+	// $scope.updateUser = function(){
+	// 	userService.getUser().then(function(data){
+	// 		$scope.user = data.data;
+	// 		if($scope.user){
+	// 			$scope.isUserLoggedIn = true;
+	// 		} else {
+	// 			$scope.isUserLoggedIn = false;
+	// 		}
+	// 		$scope.getProducts();
+	// 	})
+	// };
 
 	// $scope.updateUser();
 
@@ -81,16 +80,13 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	};
 
 
-	$scope.$on('updateUser', function(){
-		$scope.updateUser();
-		console.log('It is updating')
-	});
+	// $scope.$on('updateUser', function(){
+	// 	$scope.updateUser();
+	// 	console.log('It is updating')
+	// });
+	
+	
 
-	$scope.fbLogOut = function(){
-		$scope.isUserLoggedIn = false;
-		$location.path('/logout')
-		$scope.onHome = false;
-	};
 
 
 

@@ -33,8 +33,7 @@ app.config(function($routeProvider, $httpProvider){
 		controller: 'createControl'
 	})
 	.when('/profile', {
-		templateUrl: 'views/profile.html',
-		controller: 'profileControl'
+		templateUrl: 'views/profile.html'
 	})
 	.when('/login', {
 		templateUrl: 'views/login.html',
