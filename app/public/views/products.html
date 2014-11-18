@@ -14,20 +14,22 @@
 		</div>
 		<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
 		<div class="mainProducts"ng-repeat="product in products | filter:query">
-			{{product.productTitle}}
+			<div class="productTitle">{{product.productTitle}}</div>
 		<!-- View Product BTN -->
-			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
-<br />
-<br />
+
 			<!-- <div class="socialContainer">		
+					<div class="fb1">
 					<div fb-like></div>		
 					<div tweet="myModel.Name"></div>			
 					<div google-plus></div>
 					<div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
+			</div>
 			</div> -->
-			 <div class="socialContainer">
+			<!-- VIEW PRODUCT BTN -->
+			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
+			 <!-- <div class="socialContainer">
             <div class="fb1">
-                <div fb-like></div>
+                <div fb-like="myModel.FbLikeUrl"></div>
             </div>
             <div class="twit1">
                 <div tweet="myModel.Name"></div>
@@ -38,11 +40,8 @@
             <div class="pin1">
                 <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
             </div>
-        </div>
-
-			<!-- VIEW PRODUCT BTN -->
-			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
-		</div>
+        </div> -->
+      </div>
 	</div>
 </div>
 <div class="col-md-6">
@@ -52,25 +51,26 @@
 		</div>
 
 		<div id="productTitle">
-			<h1>{{singleProduct.productTitle}}</h1>
+			<h1>{{currentProduct.productTitle}}</h1>
 			<br />
 			<br />
-			<h3>Product Picture Here{{singleProduct.productPic}}</h3>
+			<h3>Product Picture Here{{currentProduct.productPic}}</h3>
 			<br />
 			<h3>Current Price:
 				<br/>
-				${{singleProduct.startingPrice}}
+				${{currentProduct.startingPrice}}
 			</h3>
 			<br />
 			<h3>Drop by:
 				<br />
-				${{singleProduct.reductionAmount}}
+				${{currentProduct.reductionAmount}}
 			</h3>
 			<br />
 			<h3>Next Drop:
 				<br />
-				{{singleProduct.peopleThreshold}} Orders
+				{{currentProduct.peopleThreshold - currentProduct.currentThreshold}} Orders Needed
 			</h3>
+			<button class="btn default-btn" ng-click='purchase()'>Purchase</button>
 		</div>
 	</div>
 </div>

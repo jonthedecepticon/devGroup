@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var passport = require('passport');
 var Twit = require('twit');
+var cloudinary = require('cloudinary');
 
 /**
  * API keys + Passport configuration.
@@ -28,6 +29,12 @@ mongoose.connection.on('error', function() {
 });
 
 var app = express();
+
+// cloudinary.config({ 
+//   cloud_name: 'groupdropper', 
+//   api_key: '357753245132285', 
+//   api_secret: 'a676b67565c6767a6767d6767f676fe1' 
+// });
 
 /**
  * Express configuration.
@@ -87,6 +94,7 @@ var requireAuth = function(req, res, next) {
 app.get('/', routes.index);
 app.get('/products', requireAuth, routes.products);  
 app.get('/products/:id', requireAuth, routes.product);
+app.put('/products/:id', requireAuth, routes.purchase);
 app.post('/products', requireAuth, routes.create);
 // app.get('/', homeController.index);
 // app.get('/login', userController.getLogin);

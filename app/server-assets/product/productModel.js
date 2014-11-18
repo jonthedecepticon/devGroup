@@ -9,7 +9,9 @@ var Product = new Schema({
   minimumPrice: { type: Number, required: true, default: 0 },
   reductionAmount: { type: Number, default: 0 },
   peopleThreshold: { type: Number, default: 0 },
-  productPic: { type: String, required: false, default: '' }
+  currentThreshold: { type: Number, default: 0 },
+  productPic: { type: String, required: false, default: '' },
+  currentOrders: { type: Number, required: false, default: 0}
 
 });
 

@@ -2,11 +2,13 @@ var app = angular.module('groupDropper');
 
 app.controller('mainControl', function($rootScope, $scope, productService, $location, userService){
 
-	$scope.myModel ={
-		Name: 'GroupDropper',
-		ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
-	};
-	// https://www.facebook.com/groupdropper/photos/a.1506031743015826.1073741825.1506031383015862/1506031749682492/?type=1&source=11
+	// $scope.myModel ={
+	// 	Name: 'GroupDropper'
+	 
+	// };
+	// $scope.myModel.FbLikeUrl = 'http://localhost:3000';
+	// 
+	console.log($scope.products)
 
 	$scope.updateUser = function(){
 		userService.getUser().then(function(data){
@@ -20,53 +22,16 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 		})
 	};
 
-	// $scope.updateUser();
+$scope.updateUser();
 
 	$scope.products = [];
 
-	// $scope.product = {
-	// 	productTitle: '',
-	// 	startingPrice: '',
-	// 	minimumPrice: '',
-	// 	reductionAmount: '',
-	// 	peopleThreshold: '',
-	// 	productPic: ''
-	// };
-
-	// $scope.addOption = function(){
-	// 	$scope.product.productOptions.push({text: ''})
-	// };
-
-	// $scope.removeOption = function(){
-
-	// 	$scope.product.productOptions.splice($scope.product.productOptions.indexOf(), 1);
-	// }
-
 	$scope.getProducts = function(products){
-		
-		// $scope.limit = 0;
 		productService.getProducts().then(function(products){
 			$scope.products = products;
-			// for(var i = 0; i < $scope.products.length; i++){
-			// 		if($scope.user && $scope.products[i].allVotes >= 5){
-			// 			$scope.trendingProducts.push(products[i]);
-			// 			$scope.trendingProducts[i].productTaken = false;
-			// 		} else if($scope.user && $scope.products[i].allVotes >= 5 && $scope.user.votedProducts.indexOf($scope.products[i]._id) > -1){
-			// 			$scope.trendingProducts.push(products[i]);
-			// 			$scope.products.splice(i, 1);
-			// 			$scope.limit++;
-			// 			$scope.trendingProducts[i].productTaken = true;
-			// 	} else if($scope.user && $scope.user.votedProducts.indexOf($scope.products[i]._id) > -1){
-			// 		$scope.products[i].productTaken = true;
-			// 	} else {
-			// 		$scope.products[i].productTaken = false;
-			// 		$scope.trendingProducts[i].productTaken = false;
-			// 	}
-			// }
 		});
 	};
 
-	$scope.getProducts();
 
 	$scope.createProduct = function(){
 		$location.path('/create');
@@ -75,9 +40,10 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	
 	// Updates data to display when a product is clicked
 	$scope.viewProduct = function(product){
-		$location.path('/products/' + product._id);
+
+		$scope.currentProduct = product;
+		// $location.path('/products/' + product._id);
 		// console.log($scope.products);
-		$scope.getProducts();
 	};
 
 
@@ -91,6 +57,25 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 		$location.path('/logout')
 		$scope.onHome = false;
 	};
+
+
+	$scope.purchase = function(){
+	// $scope.currentOrders = $scope.singleProduct.currentOrders;
+	// $scope.maxThreshold = $scope.singleProduct.peopleThreshold;
+	// $scope.currentThreshold = $scope.singleProduct.currentThreshold;
+	productService.purchase($scope.currentProduct)
+	.then(function (updatedProducts){
+		$scope.products = updatedProducts.products;
+		$scope.currentProduct = updatedProducts.product;
+		// if($scope.currentOrders === $scope.threshold){
+  //     return $scope.singleProduct.startingPrice =- $scope.singleProduct.reductionAmount;
+  //     $scope.currentThreshold = $scope.maxThreshold;
+  //   } else {
+  //     $scope.currentThreshold =- 1;
+  //   }
+	})
+	//$scope.getProduct();
+}
 
 
 

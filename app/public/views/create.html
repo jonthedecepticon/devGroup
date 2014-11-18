@@ -21,13 +21,25 @@
 	<br />
 	<br />
 	Upload Product Image  
-	<input ng-model="productPic" type="file">
+	
+	<div>
+		
+		<input type="file" ng-file-select="onFileSelect($files)">
+		<!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"> -->
+		<div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
+		<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+		ng-show="dropSupported">drop files here</div>
+		<div ng-file-drop-available="dropSupported=true" 
+		ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+		<button ng-click="upload.abort()">Cancel Upload</button>
+	</div>
+
 
 
 	
-		</div>
+</div>
 </div>
 <div class="createProductBtn2">
-			<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
-		</div>
+	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
+</div>
 
