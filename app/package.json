@@ -27,6 +27,7 @@
     "cheerio": "~0.13.1",
     "connect-mongo": "~0.4.0",
     "cors": "^2.5.0",
+    "ejs": "^1.0.0",
     "express": "~3.4.8",
     "express-flash": "~0.0.2",
     "express-session": "^1.9.1",

@@ -13,6 +13,11 @@ var cors = require('cors');
 var passport = require('passport');
 var Twit = require('twit');
 
+var flash = require('express-flash');
+var path = require('path');
+var less = require('less-middleware');
+
+
 /**
  * API keys + Passport configuration.
  */
@@ -22,7 +27,7 @@ var passportConf = require('./config/passport');
 /**
  * Mongoose configuration.
  */
-mongoose.connect(secrets.db, 'GroupDropper');
+mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
 });
@@ -52,7 +57,19 @@ app.use(express.session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(__dirname + '/public'));
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+app.use(flash());
+app.use(less({ src: __dirname + '/app/public', compress: true }));
+app.use(express.static(path.join(__dirname + '/public'), {maxAge: 864000000}));
+// app.use(function(req, res) {
+//   res.render('404', { status: 404 });
+// });
+app.use(express.errorHandler());
+app.use(app.router);
+
 
 /**
  * Load controllers.

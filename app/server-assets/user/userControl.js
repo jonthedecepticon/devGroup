@@ -205,8 +205,9 @@ exports.getOauthUnlink = function(req, res, next) {
  * GET /logout
  * Log out.
  */
-//TODO: if not logged in send to error 404 page
 exports.logout = function(req, res) {
+  console.log('before: ' + req.isAuthenticated());
   req.logout();
+  console.log('after: ' + req.isAuthenticated());
   res.redirect('/');
 };
