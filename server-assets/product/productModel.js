@@ -9,15 +9,10 @@ var Product = new Schema({
   minimumPrice: { type: Number, required: true, default: 0 },
   reductionAmount: { type: Number, default: 0 },
   peopleThreshold: { type: Number, default: 0 },
-<<<<<<< HEAD:server-assets/product/productModel.js
-  productPic: { type: String, required: false, default: '' }
-=======
   currentThreshold: { type: Number, default: 0 },
   productPic: { type: String, required: false, default: '' },
   totalOrders: { type: Number, required: false, default: 0},
   currentOrders: { type: Number, required: false, default: 0}
->>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/server-assets/product/productModel.js
-
 });
 
 /**
