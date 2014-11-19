@@ -68,13 +68,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-
-app.use(function(req, res, next) {
-  // CSRF protection.
-  if (_.contains(csrfExclude, req.path)) return next();
-  csrf(req, res, next);
-});
-
 app.use(function(req, res, next) {
   // Make user object available in templates.
   res.locals.user = req.user;
@@ -110,6 +103,7 @@ var userController = require('./server-assets/user/userControl');
 app.get('/', routes.index);
 app.get('/products', routes.products);  
 app.get('/products/:id', routes.product);
+app.put('/products/:id', routes.purchase);
 app.post('/products', routes.create);
 
 // app.get('/', homeController.index);
@@ -129,6 +123,7 @@ app.post('/account/profile', passportConf.isAuthenticated, userController.postUp
 app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
+
 
 /**
  * OAuth sign-in routes.

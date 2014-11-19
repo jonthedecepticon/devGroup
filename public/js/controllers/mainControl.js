@@ -3,18 +3,12 @@ var app = angular.module('groupDropper');
 app.controller('mainControl', function($rootScope, $scope, productService, $location, userService){
 
 	// $scope.myModel ={
-<<<<<<< HEAD:public/js/controllers/mainControl.js
-<<<<<<< HEAD:app/public/js/controllers/mainControl.js
-=======
-
->>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/js/controllers/mainControl.js
 	// 	Name: 'GroupDropper'
 	 
 	// };
 	// $scope.myModel.FbLikeUrl = 'http://localhost:3000';
 	// 
 	console.log($scope.products)
-<<<<<<< HEAD:public/js/controllers/mainControl.js
 
 	$scope.updateUser = function(){
 		userService.getUser().then(function(data){
@@ -27,36 +21,6 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 			$scope.getProducts();
 		})
 	};
-=======
-	// 	Name: 'GroupDropper',
-	// 	ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
-	// };
-
-	// $scope.updateUser = function(){
-	// 	userService.getUser().then(function(data){
-	// 		$scope.user = data.data;
-	// 		if($scope.user){
-	// 			$scope.isUserLoggedIn = true;
-	// 		} else {
-	// 			$scope.isUserLoggedIn = false;
-	// 		}
-	// 		$scope.getProducts();
-	// 	})
-	// };
->>>>>>> ab3e87f368fdaa31c550e09da0c4e5189f2efbb1:public/js/controllers/mainControl.js
-=======
-
-	// $scope.updateUser = function(){
-	// 	userService.getUser().then(function(data){
-	// 		$scope.user = data.data;
-	// 		if($scope.user){
-	// 			$scope.isUserLoggedIn = true;
-	// 		} else {
-	// 			$scope.isUserLoggedIn = false;
-	// 		}
-	// 		$scope.getProducts();
-	// 	})
-	// };
 
 	// 	Name: 'GroupDropper',
 	// 	ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
@@ -73,8 +37,6 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	// 		$scope.getProducts();
 	// 	})
 	// };
-
->>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/js/controllers/mainControl.js
 
 // $scope.updateUser();
 

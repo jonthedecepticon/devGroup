@@ -1,4 +1,4 @@
-var app = angular.module('groupDropper', ['ngRoute', 'angularFileUpload', 'ngResource', 'ngCookies', 'angulike'])
+var app = angular.module('groupDropper', ['ngRoute', 'ngResource', 'ngCookies', 'angulike'])
 
 // app.run([
 // 	'$rootScope', function($rootScope) {

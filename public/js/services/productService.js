@@ -1,5 +1,5 @@
 var app = angular.module('groupDropper')
-app.service('productService', function($http, $q, $upload) {
+app.service('productService', function($http, $q) {
 	
 	this.getProducts = function(){
 		return $http({
