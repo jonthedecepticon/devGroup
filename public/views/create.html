@@ -1,0 +1,48 @@
+<div class="productForm">
+	Product Title:
+	<input class="inputBoxes" type="text" ng-model="product.productTitle" placeholder="Add title here">
+	<br />
+	<br />  
+	Starting Price:
+	<input class="inputBoxes" type="text" ng-model="product.startingPrice" placeholder="Add starting price here">
+	<br />
+	<br />  
+	Minimum Price:
+	<input class="inputBoxes" type="text" ng-model="product.minimumPrice" placeholder="Add minimum price here">
+	<br />
+	<br />  
+	Reduction Amount:
+	<input class="inputBoxes" type="text" ng-model="product.reductionAmount" placeholder="Add reduction amount here">
+	<br />
+	<br />  
+	Order Threshold:
+	<input class="inputBoxes" type="text" ng-model="product.peopleThreshold" placeholder="Add order threshold here">
+	<br />
+	<br />
+	Upload Product Image  
+<<<<<<< HEAD:app/public/views/create.html
+	
+	<div>
+		
+		<input type="file" ng-file-select="onFileSelect($files)">
+		<!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"> -->
+		<div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
+		<div ng-file-drop="onFileSelect($files)" ng-file-drag-over-class="optional-css-class-name-or-function"
+		ng-show="dropSupported">drop files here</div>
+		<div ng-file-drop-available="dropSupported=true" 
+		ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
+		<button ng-click="upload.abort()">Cancel Upload</button>
+	</div>
+
+
+
+	
+</div>
+=======
+	<input ng-model="productPic" type="file">
+>>>>>>> ab3e87f368fdaa31c550e09da0c4e5189f2efbb1:public/views/create.html
+</div>
+<div class="createProductBtn2">
+	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
+</div>
+
