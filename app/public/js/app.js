@@ -50,7 +50,7 @@ app.config(function($routeProvider, $httpProvider){
 	})
 	
 	.otherwise({
-		redirectTo: '/login'
+		redirectTo: '/products'
 	})
  
 });

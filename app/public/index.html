@@ -15,7 +15,8 @@
 				<ul>
 					<li><a href="/#/products">Home</a></li>
 					<li><a href="/#/profile">My Profile</a></li>
-					<li><a ng-click="logout()" href="/logout">Log Out</a></li>
+					<li><a ng-click="logout()" href="/logout" ng-switch-when="true">Log Out</a></li>
+					<li><a href="/#/login" ng-switch-default>Login</a></li>
 				</ul>
 			</div>
 		</header>
