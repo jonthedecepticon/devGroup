@@ -45,28 +45,13 @@ body {
 	margin-top: 5%;
 }
 
-.optionBox {
-	border-radius: 5px;
-	text-align: center;
-	padding: 5px 0;	
-}
-
-.optionCreateBtns {
-	margin-left: 2%;
-}
-
-
-.addCreateBtns {
-	margin-left: 42.5%;
-}
-
 .inputBoxes{
 	width: 30%;
 	text-align: left;
 }
 
 .createProductBtn {
-	margin-top: 2%;
+	margin-top: .5%;
 	text-align: center;
 }
 
@@ -154,20 +139,42 @@ h1 {
 
 .mainProducts {
 	width: 100%;
-	padding: 5px 0px;
+	padding: 1px 0px;
 	background-color: rgba(255, 255, 255, 0.6);
 	color: #000;
 	border-radius: 5px;
 	border: solid black 1.0px;
 	display: inline-block;
+	text-align: center;
 
 }
 
 .socialContainer {
 	height: 100%;
 	width: 100%;
-	float: left;
-	display: inline-block;
+	float: right;
+
+}
+
+.fb1 {
+	float: right;
+	margin-left: -5%;
+
+}
+
+.twit1 {
+	float: right;
+	margin-left: -5%;
+}
+
+.google1 {
+	float: right;
+
+}
+
+.pin1 {
+	float: right;
+	margin-right: 5%;
 }
 
 #searchProducts {
@@ -239,11 +246,13 @@ header {
 	background-color: rgba(0, 0, 0, 0.7);
 	text-align: left;
 	width: 100%;
-	margin: 3%;
 	padding: 3% 5%;
 	border-radius: 4%;
 }
 
+.productTitle	{
+	font-size: 1.5em;
+}
 
 
 
