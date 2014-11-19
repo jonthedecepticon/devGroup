@@ -1,22 +1,23 @@
-'use strict';
-
 /**
  * Module dependencies.
  */
-var express = require('express');
-var expressValidator = require('express-validator');
-var Session = require('express-session');
-var mongoose = require('mongoose');
-var MongoStore = require('connect-mongo')(express);
-var bodyParser = require('body-parser');
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
 var cors = require('cors');
+var compress = require('compression');
+var errorHandler = require('errorhandler');
 var passport = require('passport');
-var Twit = require('twit');
-
+var express = require('express');
+var bodyParser = require('body-parser');
 var flash = require('express-flash');
+var mongoose = require('mongoose');
+var MongoStore = require('connect-mongo')(session);
+var methodOverride = require('method-override');
+//for sure working ^ no engine required errors 
+var expressValidator = require('express-validator');
 var path = require('path');
-var less = require('less-middleware');
-
+var csrf = require('lusca').csrf();
+var _ = require('lodash');
 
 /**
  * API keys + Passport configuration.
@@ -35,40 +36,56 @@ mongoose.connection.on('error', function() {
 var app = express();
 
 /**
+ * CSRF whitelist.
+ */
+var csrfExclude = ['/url1', '/url2'];
+
+/**
  * Express configuration.
  */
-app.locals.cacheBuster = Date.now();
-app.use(express.logger('dev'));
 app.set('port', process.env.PORT || 3000);
-app.use(cors());
 app.use(express.compress());
-app.use(express.favicon());
 app.use(express.logger('dev'));
-app.use(express.cookieParser());
-app.use(express.json());
-app.use(express.urlencoded());
+app.locals.cacheBuster = Date.now();
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-app.use(express.methodOverride());
-app.use(express.session({
-  secret: 'your secret code',
-  store: new MongoStore({
-    db: secrets.db
-  })
+app.use(methodOverride());
+app.use(express.favicon());
+app.use(cookieParser());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: secrets.sessionSecret,
+  store: new MongoStore({ url: secrets.db, auto_reconnect: true })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
+
+
 app.use(function(req, res, next) {
+  // CSRF protection.
+  if (_.contains(csrfExclude, req.path)) return next();
+  csrf(req, res, next);
+});
+
+app.use(function(req, res, next) {
+  // Make user object available in templates.
   res.locals.user = req.user;
   next();
 });
-app.use(flash());
-app.use(less({ src: __dirname + '/app/public', compress: true }));
-app.use(express.static(path.join(__dirname + '/public'), {maxAge: 864000000}));
-// app.use(function(req, res) {
-//   res.render('404', { status: 404 });
-// });
-app.use(express.errorHandler());
-app.use(app.router);
+app.use(function(req, res, next) {
+  // Remember original destination before login.
+  var path = req.path.split('/')[1];
+  if (/auth|login|logout|signup|fonts|favicon/i.test(path)) {
+    return next();
+  }
+  req.session.returnTo = req.path;
+  next();
+});
+app.use(express.static(__dirname + '/public'), {maxAge: 864000000});
 
 
 /**
@@ -91,10 +108,14 @@ app.get('/products', routes.products);
 app.get('/products/:id', routes.product);
 app.post('/products', routes.create);
 
-app.get('/', homeController.index);
+// app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
+app.get('/forgot', userController.getForgot);
+app.post('/forgot', userController.postForgot);
+app.get('/reset/:token', userController.getReset);
+app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
 app.get('/contact', contactController.getContact);
@@ -105,12 +126,35 @@ app.post('/account/password', passportConf.isAuthenticated, userController.postU
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products', failureRedirect: '/login' }));
+
+/**
+ * OAuth sign-in routes.
+ */
+app.get('/auth/instagram', passport.authenticate('instagram'));
+app.get('/auth/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products/', failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+app.get('/auth/github', passport.authenticate('github'));
+app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
-app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/#/products', failureRedirect: '/login' }));
+app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/#/products/', failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
 app.get('/auth/twitter', passport.authenticate('twitter'));
-app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/#/products', failureRedirect: '/login' }));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/#/products/', failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE' }));
+app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), function(req, res) {
+  res.redirect(req.session.returnTo || '/');
+});
+
 
 /**
 * Sample crud
@@ -120,6 +164,17 @@ app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedi
 // app.post('/api/item', itemController.postItem);
 // app.delete('/api/item/:id', itemController.deleteItem);
 
+/**
+ * 500 Error Handler.
+ */
+
+app.use(express.errorHandler());
+
+/**
+ * Start Express server.
+ */
 app.listen(app.get('port'), function() {
   console.log('✔ Express server listening on port ' + app.get('port'));
 });
+
+module.exports = app;

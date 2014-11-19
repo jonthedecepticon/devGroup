@@ -85,7 +85,11 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	// 	console.log('It is updating')
 	// });
 	
-	
+	// $scope.logout = function(req, res) {
+	//   req.logout();
+	//   res.redirect('/');
+	// };
+		
 
 
 
