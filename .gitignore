@@ -3,7 +3,7 @@
 # ----------------------------
 
 /config/secrets.js
-node_modules
+
 
 lib-cov
 *.seed
