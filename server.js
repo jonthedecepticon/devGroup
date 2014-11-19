@@ -17,7 +17,7 @@ var methodOverride = require('method-override');
 var expressValidator = require('express-validator');
 var path = require('path');
 var _ = require('lodash');
-
+var cloudinary = require('cloudinary');
 /**
  * API keys + Passport configuration.
  */
@@ -37,10 +37,20 @@ var app = express();
 
 
 /**
+ * CSRF whitelist.
+ */
+cloudinary.config({ 
+  cloud_name: 'groupdropper', 
+  api_key: '357753245132285', 
+  api_secret: 'a676b67565c6767a6767d6767f676fe1' 
+});
+
+
+/**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
-app.use(express.compress());
+app.use(compress());
 app.use(express.logger('dev'));
 app.locals.cacheBuster = Date.now();
 app.use(cors());
@@ -59,6 +69,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
 
 
 
@@ -98,6 +109,7 @@ var userController = require('./server-assets/user/userControl');
 app.get('/', routes.index);
 app.get('/products', routes.products);  
 app.get('/products/:id', routes.product);
+app.put('/products/:id', routes.purchase);
 app.post('/products', routes.create);
 
 // app.get('/', homeController.index);
