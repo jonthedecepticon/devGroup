@@ -19,11 +19,14 @@
 	<input class="inputBoxes" type="text" ng-model="product.peopleThreshold" placeholder="Add order threshold here">
 	<br />
 	<br />
+<<<<<<< HEAD:public/views/create.html
 	Upload Product Image  
 <<<<<<< HEAD:app/public/views/create.html
 	
+=======
+	Upload Product Image  	
+>>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/views/create.html
 	<div>
-		
 		<input type="file" ng-file-select="onFileSelect($files)">
 		<!-- <input type="file" ng-file-select="onFileSelect($files)" multiple accept="image/*"> -->
 		<div class="button" ng-file-select="onFileSelect($files)" data-multiple="true"></div>
@@ -32,6 +35,7 @@
 		<div ng-file-drop-available="dropSupported=true" 
 		ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
 		<button ng-click="upload.abort()">Cancel Upload</button>
+<<<<<<< HEAD:public/views/create.html
 	</div>
 
 
@@ -41,6 +45,9 @@
 =======
 	<input ng-model="productPic" type="file">
 >>>>>>> ab3e87f368fdaa31c550e09da0c4e5189f2efbb1:public/views/create.html
+=======
+	</div>	
+>>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/views/create.html
 </div>
 <div class="createProductBtn2">
 	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>

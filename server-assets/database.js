@@ -62,8 +62,13 @@ module.exports.purchase = function(req, res){
     if(product){
       console.log(product.currentThreshold, 'Current');
       product.currentThreshold++;  // next price drop === product.peoplethreshold - product.currentThreshold
+      product.totalOrders++;
       console.log(product.currentThreshold, 'Current Increased');
-      if(product.peopleThreshold - product.currentThreshold <= 0){
+      if(product.peopleThreshold - product.currentThreshold <= 0 && (product.startingPrice - product.reductionAmount) < product.minimumPrice){
+        console.log('price drop :)');
+        product.currentThreshold = 0;
+      }
+      else if(product.peopleThreshold - product.currentThreshold <= 0){
         console.log('price drop :)');
         product.startingPrice -= product.reductionAmount;
         product.currentThreshold = 0;

@@ -4,12 +4,16 @@
 
 <div class="col-md-6">
 	<div id="panle1" class="panel1">
-		<div class="top-panel1"><!-- LIST OF PRODUCTS -->
+		<div class="top-panel1">
+			<!-- LIST OF PRODUCTS -->
 			<h1 id="newTitle">Trending Products</h1>
 		</div>
 		<input id="searchProducts" type="text" class="form-control" ng-model="query" placeholder="Search for a product">
 		<div class="mainProducts"ng-repeat="product in products | filter:query">
+<<<<<<< HEAD:public/views/products.html
 <<<<<<< HEAD:app/public/views/products.html
+=======
+>>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/views/products.html
 			<div class="productTitle">{{product.productTitle}}</div>
 		<!-- View Product BTN -->
 
@@ -37,15 +41,21 @@
                 <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
             </div>
         </div> -->
+<<<<<<< HEAD:public/views/products.html
       </div>
 =======
 			{{product.productTitle}}
 			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
+=======
+>>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/views/products.html
 			<br />
 			<br />
         </div>
 			<!-- VIEW PRODUCT BTN -->
+<<<<<<< HEAD:public/views/products.html
 >>>>>>> ab3e87f368fdaa31c550e09da0c4e5189f2efbb1:public/views/products.html
+=======
+>>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/public/views/products.html
 	</div>
 </div>
 <div class="col-md-6">
