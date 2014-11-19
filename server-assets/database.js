@@ -49,13 +49,49 @@ module.exports.product = function(req, res) {
       product.totalVotes = totalVotes;
       res.json(product);
     } else {
+      console.log('ERRORRRRRRRRRRRRRRRR!!!')
       res.json({error:true});
     }
   });
 };
+
+module.exports.purchase = function(req, res){
+
+  Product.findOne({_id: req.params.id}).exec(function(err, product){
+
+    if(product){
+      console.log(product.currentThreshold, 'Current');
+      product.currentThreshold++;  // next price drop === product.peoplethreshold - product.currentThreshold
+      product.totalOrders++;
+      console.log(product.currentThreshold, 'Current Increased');
+      if(product.peopleThreshold - product.currentThreshold <= 0 && (product.startingPrice - product.reductionAmount) < product.minimumPrice){
+        console.log('price drop :)');
+        product.currentThreshold = 0;
+      }
+      else if(product.peopleThreshold - product.currentThreshold <= 0){
+        console.log('price drop :)');
+        product.startingPrice -= product.reductionAmount;
+        product.currentThreshold = 0;
+      }
+
+      product.save(function(err){
+        if(err){
+          console.log('This is NOT SAVING error: ' + err)
+        } else {
+          Product.find().exec(function (err, products) {
+            res.send({products: products, product: product});
+          })
+        }
+      })
+    }
+  })
+}
+
+
 // JSON API for creating a new product
 module.exports.create = function(req, res) {
-  console.log(req.body)
+  console.log('req.body ' + JSON.stringify(req.body));
+  // console.log(req.files.file)
   var reqBody = req.body,
   productObj = {
     productTitle: reqBody.productTitle,
@@ -63,7 +99,6 @@ module.exports.create = function(req, res) {
     minimumPrice: reqBody.minimumPrice,
     reductionAmount: reqBody.reductionAmount,
     peopleThreshold: reqBody.peopleThreshold,
-    productPic: reqBody.productPic
   };
   var product = new Product(productObj);
   product.save(function(err, doc) {

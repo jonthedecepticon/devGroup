@@ -2,6 +2,11 @@ var app = angular.module('groupDropper');
 
 app.controller('createControl', function($rootScope, $scope, productService, $location, userService){
 
+var fileArr = [];
+$scope.onFileSelect = function($files){
+	fileArr = $files;
+}
+
 	$scope.product = {
 		productTitle: '',
 		startingPrice: '',
@@ -19,8 +24,8 @@ app.controller('createControl', function($rootScope, $scope, productService, $lo
 			minimumPrice: '',
 			reductionAmount: '',
 			peopleThreshold: '',
-			productPic: ''
 		};
+		
 		$location.path('/products');
 	}
 
