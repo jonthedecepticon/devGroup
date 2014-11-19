@@ -35,11 +35,11 @@ mongoose.connection.on('error', function() {
 
 var app = express();
 
-// cloudinary.config({ 
-//   cloud_name: 'groupdropper', 
-//   api_key: '357753245132285', 
-//   api_secret: 'a676b67565c6767a6767d6767f676fe1' 
-// });
+cloudinary.config({ 
+  cloud_name: 'groupdropper', 
+  api_key: '357753245132285', 
+  api_secret: 'a676b67565c6767a6767d6767f676fe1' 
+});
 
 /**
  * Express configuration.
@@ -114,10 +114,10 @@ app.get('/account/unlink/:provider', passportConf.isAuthenticated, userControlle
 
 
 app.get('/', routes.index);
-app.get('/products', requireAuth, routes.products);  
-app.get('/products/:id', requireAuth, routes.product);
-app.put('/products/:id', requireAuth, routes.purchase);
-app.post('/products', requireAuth, routes.create);
+app.get('/products', routes.products);  
+app.get('/products/:id', routes.product);
+app.put('/products/:id', routes.purchase);
+app.post('/products', routes.create);
 // app.get('/', homeController.index);
 // app.get('/login', userController.getLogin);
 // app.post('/login', userController.postLogin);

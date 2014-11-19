@@ -11,17 +11,17 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	// 
 	console.log($scope.products)
 
-	$scope.updateUser = function(){
-		userService.getUser().then(function(data){
-			$scope.user = data.data;
-			if($scope.user){
-				$scope.isUserLoggedIn = true;
-			} else {
-				$scope.isUserLoggedIn = false;
-			}
-			$scope.getProducts();
-		})
-	};
+	// $scope.updateUser = function(){
+	// 	userService.getUser().then(function(data){
+	// 		$scope.user = data.data;
+	// 		if($scope.user){
+	// 			$scope.isUserLoggedIn = true;
+	// 		} else {
+	// 			$scope.isUserLoggedIn = false;
+	// 		}
+	// 		$scope.getProducts();
+	// 	})
+	// };
 
 	// 	Name: 'GroupDropper',
 	// 	ImageUrl: 'https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/c44.0.160.160/p160x160/10615576_1506031749682492_331069997498428397_n.png?oh=f88bbe14da45fed367762af9008a4057&oe=54D2EE8F&__gda__=1423429513_6bf2199e86faea8dca2b0233917d3dcb'
@@ -40,7 +40,7 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	// };
 
 
-$scope.updateUser();
+// $scope.updateUser();
 
 	$scope.products = [];
 
@@ -93,6 +93,7 @@ $scope.updateUser();
 }
 
 
+$scope.getProducts();
 
 
 

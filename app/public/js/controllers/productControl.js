@@ -28,7 +28,6 @@ app.controller('productControl', function(product, $scope, $location, $routePara
 
 
 $scope.purchase = function(){
-debugger;
 	// $scope.currentOrders = $scope.singleProduct.currentOrders;
 	// $scope.maxThreshold = $scope.singleProduct.peopleThreshold;
 	// $scope.currentThreshold = $scope.singleProduct.currentThreshold;
