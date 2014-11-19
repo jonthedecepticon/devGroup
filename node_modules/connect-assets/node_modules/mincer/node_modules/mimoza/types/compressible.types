@@ -1,0 +1,91 @@
+# Part 1. Manually crafted from apache `mime.types`, feel free to extend
+#
+# Not included:
+#
+# - rare things (on web)
+# - not compressable things (when gzipped size gain always < 20-30%)
+#
+application/atom+xml				atom
+application/gml+xml				gml
+application/gpx+xml				gpx
+application/ecmascript				ecma
+application/java-vm				class
+application/javascript				js
+application/json				json
+application/jsonml+json				jsonml
+application/mathml+xml				mathml
+application/msword				doc dot
+application/pgp-signature			asc sig
+application/pkix-cert				cer
+application/postscript				ai eps ps
+application/rdf+xml				rdf
+application/rsd+xml				rsd
+application/rss+xml				rss
+application/rtf					rtf
+application/vnd.google-earth.kml+xml		kml
+application/vnd.mozilla.xul+xml			xul
+application/vnd.ms-excel			xls xlm xla xlc xlt xlw
+application/vnd.ms-fontobject			eot
+application/vnd.ms-powerpoint			ppt pps pot
+application/x-font-ttf				ttf ttc
+application/x-latex				latex
+application/x-sh				sh
+application/x-tar				tar
+application/x-tcl				tcl
+application/x-tex				tex
+application/xhtml+xml				xhtml xht
+application/xml					xml xsl
+application/xop+xml				xop
+application/xslt+xml				xslt
+audio/x-wav					wav
+font/opentype					otf
+image/svg+xml					svg svgz
+image/bmp					bmp
+image/tiff					tiff tif
+message/rfc822					eml mime
+text/cache-manifest				appcache
+text/calendar					ics ifb
+text/css					css
+text/csv					csv
+text/html					html htm
+text/n3						n3
+text/plain					txt text conf def list log in
+text/richtext					rtx
+text/sgml					sgml sgm
+text/vcard					vcard
+text/x-asm					s asm
+text/x-c					c cc cxx cpp h hh dic
+text/x-fortran					f for f77 f90
+text/x-java-source				java
+text/x-opml					opml
+text/x-pascal					p pas
+text/x-nfo					nfo
+text/x-setext					etx
+text/x-sfv					sfv
+text/x-uuencode					uu
+text/x-vcalendar				vcs
+text/x-vcard					vcf
+
+################################################################################
+
+#
+# Part 2. Custom things, missed in apache `mime.types`, or apache overrides
+#
+
+# google dart language
+application/dart				dart
+
+# correct opentype font mime
+font/opentype					otf
+
+# Markdown text
+# http://stackoverflow.com/questions/10701983/what-is-the-mime-type-for-markdown
+text/x-markdown					markdown md mkd
+
+# HTC support (for CSS3PIE etc)
+# http://en.wikipedia.org/wiki/HTML_Components
+text/x-component  htc
+
+# Mozilla App manifest mime type
+# https://developer.mozilla.org/en/Apps/Manifest#Serving_manifests
+application/x-web-app-manifest+json   webapp
