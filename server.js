@@ -16,7 +16,6 @@ var methodOverride = require('method-override');
 //for sure working ^ no engine required errors 
 var expressValidator = require('express-validator');
 var path = require('path');
-var csrf = require('lusca').csrf();
 var _ = require('lodash');
 
 /**
@@ -35,10 +34,7 @@ mongoose.connection.on('error', function() {
 
 var app = express();
 
-/**
- * CSRF whitelist.
- */
-var csrfExclude = ['/url1', '/url2'];
+
 
 /**
  * Express configuration.
@@ -65,11 +61,7 @@ app.use(passport.session());
 app.use(flash());
 
 
-app.use(function(req, res, next) {
-  // CSRF protection.
-  if (_.contains(csrfExclude, req.path)) return next();
-  csrf(req, res, next);
-});
+
 
 app.use(function(req, res, next) {
   // Make user object available in templates.
