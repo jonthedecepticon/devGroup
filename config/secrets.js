@@ -1,6 +1,6 @@
 module.exports = {
 
-  db: process.env.MONGOLAB_URI || process.env.MONGODB || 'mongodb://localhost:27017/test',
+  db: process.env.MONGOLAB_URI || process.env.MONGODB || 'mongodb://localhost:27017/GroupDropper',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
