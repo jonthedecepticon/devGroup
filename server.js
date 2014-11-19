@@ -16,9 +16,8 @@ var methodOverride = require('method-override');
 //for sure working ^ no engine required errors 
 var expressValidator = require('express-validator');
 var path = require('path');
-var csrf = require('lusca').csrf();
 var _ = require('lodash');
-
+var cloudinary = require('cloudinary');
 /**
  * API keys + Passport configuration.
  */
@@ -35,24 +34,21 @@ mongoose.connection.on('error', function() {
 
 var app = express();
 
-<<<<<<< HEAD:server.js
+
 /**
  * CSRF whitelist.
  */
-var csrfExclude = ['/url1', '/url2'];
-=======
 cloudinary.config({ 
   cloud_name: 'groupdropper', 
   api_key: '357753245132285', 
   api_secret: 'a676b67565c6767a6767d6767f676fe1' 
 });
->>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/server.js
 
 /**
  * Express configuration.
  */
 app.set('port', process.env.PORT || 3000);
-app.use(express.compress());
+app.use(compress());
 app.use(express.logger('dev'));
 app.locals.cacheBuster = Date.now();
 app.use(cors());
@@ -134,8 +130,6 @@ app.post('/account/password', passportConf.isAuthenticated, userController.postU
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
-
-<<<<<<< HEAD:server.js
 /**
  * OAuth sign-in routes.
  */
@@ -151,28 +145,6 @@ app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
   res.redirect(req.session.returnTo || '/');
 });
-=======
-app.get('/', routes.index);
-app.get('/products', routes.products);  
-app.get('/products/:id', routes.product);
-app.put('/products/:id', routes.purchase);
-app.post('/products', routes.create);
-// app.get('/', homeController.index);
-// app.get('/login', userController.getLogin);
-// app.post('/login', userController.postLogin);
-// app.get('/logout', userController.logout);
-// app.get('/signup', userController.getSignup);
-// app.post('/signup', userController.postSignup);
-// app.get('/contact', contactController.getContact);
-// app.post('/contact', contactController.postContact);
-// app.get('/account', passportConf.isAuthenticated, userController.getAccount);
-// app.post('/account/profile', passportConf.isAuthenticated, userController.postUpdateProfile);
-// app.post('/account/password', passportConf.isAuthenticated, userController.postUpdatePassword);
-// app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
-// app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
-app.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
-app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products', failureRedirect: '/login' }));
->>>>>>> 63427286217e1aa200a6972eaa6dc186ace4c147:app/server.js
 app.get('/auth/google', passport.authenticate('google', { scope: 'profile email' }));
 app.get('/auth/google/callback', passport.authenticate('google', { successRedirect: '/#/products/', failureRedirect: '/login' }), function(req, res) {
   res.redirect(req.session.returnTo || '/');
