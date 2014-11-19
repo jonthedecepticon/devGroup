@@ -1,5 +1,5 @@
 var passport = require('passport');
-// var LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 var OAuthStrategy = require('passport-oauth').OAuthStrategy;
 var OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
@@ -20,18 +20,18 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-// passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, password, done) {
-//   User.findOne({ email: email }, function(err, user) {
-//     if (!user) return done(null, false, { message: 'Email ' + email + ' not found'});
-//     user.comparePassword(password, function(err, isMatch) {
-//       if (isMatch) {
-//         return done(null, user);
-//       } else {
-//         return done(null, false, { message: 'Invalid email or password.' });
-//       }
-//     });
-//   });
-// }));
+passport.use(new LocalStrategy({ usernameField: 'email' }, function(email, password, done) {
+  User.findOne({ email: email }, function(err, user) {
+    if (!user) return done(null, false, { message: 'Email ' + email + ' not found'});
+    user.comparePassword(password, function(err, isMatch) {
+      if (isMatch) {
+        return done(null, user);
+      } else {
+        return done(null, false, { message: 'Invalid email or password.' });
+      }
+    });
+  });
+}));
 
 
 

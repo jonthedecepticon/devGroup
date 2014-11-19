@@ -1,10 +1,10 @@
 var app = angular.module('groupDropper', ['ngRoute', 'angularFileUpload', 'ngResource', 'ngCookies', 'angulike'])
 
-app.run([
-	'$rootScope', function($rootScope) {
-          $rootScope.facebookAppId = '653358958106368';
-      }
-	])
+// app.run([
+// 	'$rootScope', function($rootScope) {
+//           $rootScope.facebookAppId = '653358958106368';
+//       }
+// 	])
 
 // app.run(function (userService, $rootScope, $location) {
 // 		$rootScope.$on("$routeChangeStart", function () {
@@ -33,12 +33,11 @@ app.config(function($routeProvider, $httpProvider){
 		controller: 'createControl'
 	})
 	.when('/profile', {
-		templateUrl: 'views/profile.html',
-		controller: 'profileControl'
+		templateUrl: 'views/profile.html'
 	})
 	.when('/login', {
 		templateUrl: 'views/login.html',
-		controller: 'loginControl'
+		controller: 'mainControl'
 	})
 	.when('/products/:productId', {
 		templateUrl: 'views/products.html', // displays product data on same page

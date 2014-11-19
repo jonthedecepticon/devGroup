@@ -1,4 +1,3 @@
-
 <div class="productForm">
 	Product Title:
 	<input class="inputBoxes" type="text" ng-model="product.productTitle" placeholder="Add title here">
@@ -20,8 +19,7 @@
 	<input class="inputBoxes" type="text" ng-model="product.peopleThreshold" placeholder="Add order threshold here">
 	<br />
 	<br />
-	Upload Product Image  
-	
+	Upload Product Image  	
 	<div>
 		
 		<input type="file" ng-file-select="onFileSelect($files)">
@@ -32,12 +30,9 @@
 		<div ng-file-drop-available="dropSupported=true" 
 		ng-show="!dropSupported">HTML5 Drop File is not supported!</div>
 		<button ng-click="upload.abort()">Cancel Upload</button>
-	</div>
-
-
-
-	
+	</div>	
 </div>
+	<input ng-model="productPic" type="file">
 </div>
 <div class="createProductBtn2">
 	<button id="productBtn" class="btn btn-primary" ng-click="createProduct()">Create Product</button>
