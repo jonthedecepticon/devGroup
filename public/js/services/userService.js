@@ -4,8 +4,16 @@ app.service('userService', function($http, $q, $location){
 	
 	this.deleteUser = function(){
 		return $http({
-			method: 'DELETE',
-			url: '/account/delete' + user._id
+			method: 'POST',
+			url: '/account/delete'
 		});
 	}
+
+	this.unlinkAccount = function(provider){
+		return $http({
+			method: 'GET',
+			url: '/account/unlink/' + provider
+		});
+	}
+
 });
