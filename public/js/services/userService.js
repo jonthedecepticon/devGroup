@@ -22,7 +22,7 @@ app.service('userService', function($http, $q, $location){
 			url: '/account/unlink/' + provider
 		});
 	}
-
+	//TODO: fix update so string doesnt delete previous info. 
 	this.updateProfile = function(user){
 		return $http({
 			method: 'POST',
@@ -41,12 +41,11 @@ app.service('userService', function($http, $q, $location){
 			method: 'POST',
 			url: '/account/password',
 			data: {
-				password: user.password1,
-				password: user.password2
+				password: user.password
 			}
 		});
 	}
-	//TODO: figure out how to do password/confirm password
+	
 	this.signUp = function(user){
 		return $http({
 			method: 'POST',

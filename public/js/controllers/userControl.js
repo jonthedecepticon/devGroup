@@ -16,7 +16,7 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 	};
 	
 	$scope.updateProfile = function(){
-		 // console.log('Scope user is: ', $scope.userUpdate)
+		 console.log('Scope user is: ', $scope.userUpdate)
 		userService.updateProfile($scope.userUpdate)
 			.then(function(user){
 				$location.path('/profile');
@@ -26,12 +26,12 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 	//TODO: fix password
 	$scope.passwordUpdate = function(){
 		console.log('Scope user is: ', $scope.updatePassword)
-		userService.passwordUpdate($scope.updatePassword1, $scope.updatePassword2)
+		userService.passwordUpdate($scope.updatePassword)
 			.then(function(User){
 				console.log('password updated')
 			})
-			$scope.updatePassword1 = ''; 
-			$scope.updatePassword2 = '';
+			// $scope.updatePassword1 = ''; 
+			// $scope.updatePassword2 = '';
 	}
 
 	$scope.signUp = function(){
@@ -42,7 +42,6 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 			.error(function(){
 				console.log('incorrect')
 			})
-		
 	}
 
 	$scope.login = function(){
