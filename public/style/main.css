@@ -95,6 +95,7 @@ padding-top: 5px;
 #viewProductBtn{
 	display: inline-block;
 	background-color: rgba(0, 150, 0, 0.8);
+	margin-top: 1%;
 }
 
 #backToProductsBtn {
@@ -150,10 +151,9 @@ h1 {
 }
 
 .socialContainer {
-	height: 100%;
-	width: 100%;
-	float: right;
-
+	/*height: 100%;
+	width: 100%;*/
+	margin: 2% 20% -3% 0;
 }
 
 .fb1 {
@@ -248,6 +248,7 @@ header {
 	width: 100%;
 	padding: 3% 5%;
 	border-radius: 4%;
+	height: 825px;
 }
 
 .productTitle	{

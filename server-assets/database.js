@@ -6,6 +6,7 @@ var Product = require('./product/productModel');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var User = require('./user/userModel');
+var cloudinary = require('cloudinary');
 
 /**
  * Mongoose configuration.
@@ -55,6 +56,11 @@ module.exports.product = function(req, res) {
   });
 };
 
+// GroupDropper listing mechanics
+// After purchase confirmation:
+// 1.check to see if threshold is met. If threshold is met drop current price by reductionAmount
+//  and reset 'next drop' to maximum; If threshold not met, reduce 'next drop' by quantity purchased.
+
 module.exports.purchase = function(req, res){
 
   Product.findOne({_id: req.params.id}).exec(function(err, product){
@@ -99,6 +105,7 @@ module.exports.create = function(req, res) {
     minimumPrice: reqBody.minimumPrice,
     reductionAmount: reqBody.reductionAmount,
     peopleThreshold: reqBody.peopleThreshold,
+    productPic: reqBody.productPic
   };
   var product = new Product(productObj);
   product.save(function(err, doc) {
@@ -109,3 +116,22 @@ module.exports.create = function(req, res) {
     }   
   });
 };
+
+// module.exports.addImageReference = function(req, res){
+//   Product.findOne({_id: req.params.id}).exec(function(err, product){
+//     if(product){
+//       productPic: req.body.productPic
+
+//   product.save(function(err){
+//         if(err){
+//           console.log('This is NOT SAVING error: ' + err)
+//         } else {
+//           Product.find().exec(function (err, products) {
+//             res.send({products: products, product: product});
+//           })
+//         }
+//       })
+//     }
+//  });
+// };
+
