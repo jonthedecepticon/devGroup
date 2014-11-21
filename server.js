@@ -13,11 +13,12 @@ var flash = require('express-flash');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongo')(session);
 var methodOverride = require('method-override');
-//for sure working ^ no engine required errors 
+
 var expressValidator = require('express-validator');
 var path = require('path');
 var _ = require('lodash');
 var cloudinary = require('cloudinary');
+
 /**
  * API keys + Passport configuration.
  */
@@ -31,16 +32,16 @@ mongoose.connect(secrets.db);
 mongoose.connection.on('error', function() {
   console.log('✗ MongoDB Connection Error. Please make sure MongoDB is running.'.red);
 });
-
 var app = express();
 
-
+/**
+ * Cloudinary configuration.
+ */
 cloudinary.config({ 
   cloud_name: 'groupdropper', 
   api_key: '357753245132285', 
   api_secret: 'a676b67565c6767a6767d6767f676fe1' 
 });
-
 
 /**
  * Express configuration.
@@ -65,7 +66,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
 app.use(function(req, res, next) {
   // Make user object available in templates.
   res.locals.user = req.user;
@@ -101,9 +101,8 @@ var userController = require('./server-assets/user/userControl');
 app.get('/', routes.index);
 app.get('/products', routes.products);  
 app.get('/products/:id', routes.product);
-app.put('/products/:id', routes.purchase);
+app.put('/products/:id', passportConf.isAuthenticated, routes.purchase);
 app.post('/products', routes.create);
-
 // app.get('/', homeController.index);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
@@ -122,6 +121,12 @@ app.post('/account/password', passportConf.isAuthenticated, userController.postU
 app.post('/account/delete', passportConf.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConf.isAuthenticated, userController.getOauthUnlink);
 
+
+/**
+ * API examples routes.
+ */
+app.get('/api/stripe', apiController.getStripe);
+app.post('/api/stripe', apiController.postStripe);
 
 /**
  * OAuth sign-in routes.
@@ -163,7 +168,6 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRe
 /**
  * 500 Error Handler.
  */
-
 app.use(express.errorHandler());
 
 /**

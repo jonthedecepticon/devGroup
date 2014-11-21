@@ -1,5 +1,6 @@
 <div class="loginBox">
   <form role="form">
+    <h1>Log In</h1>
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
@@ -12,6 +13,25 @@
   </form>
   <br />
 	<br /> 
+  <h1>Sign Up</h1>
+  <br />
+  <br />
+  <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" ng-model="userSignUp.email" placeholder="Enter email" required >
+    </div>
+    <div class="form-group">
+     <label for="exampleInputPassword1">Password</label>
+     <input type="password" class="form-control" id="exampleInputPassword1" ng-model="userSignUp.password" placeholder="Password" required>
+    </div>
+    <!-- <div class="form-group">
+     <label for="exampleInputPassword1"> Confirm Password</label>
+     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password" required ng-model="userSignUp.password2">
+    </div> -->
+    <button ng-click="signUp()" class="btn btn-default">Submit</button>
+  </form>
+  <br />
+  <br /> 
   <br />
   <div class="fbBtn">
     <a href="/auth/facebook"><img src="http://www.kilnandco.com/gallery/var/albums/facebook-login-button.png?m=1375582078"></a>
