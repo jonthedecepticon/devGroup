@@ -23,7 +23,7 @@ app.service('userService', function($http, $q, $location){
 		});
 	}
 
-	this.updateProfile = function(User){
+	this.updateProfile = function(user){
 		return $http({
 			method: 'POST',
 			url: '/account/profile',
@@ -51,6 +51,17 @@ app.service('userService', function($http, $q, $location){
 		return $http({
 			method: 'POST',
 			url: '/signup',
+			data: {
+				email: user.email,
+				password: user.password
+			}
+		});
+	}
+
+	this.login = function(user){
+		return $http({
+			method: 'POST',
+			url: '/login',
 			data: {
 				email: user.email,
 				password: user.password
