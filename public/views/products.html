@@ -12,7 +12,7 @@
 		<div class="mainProducts"ng-repeat="product in products | filter:query">
 
 			<div class="productTitle">{{product.productTitle}}</div>
-		<!-- View Product BTN -->
+			<!-- View Product BTN -->
 
 			<!-- <div class="socialContainer">		
 					<div class="fb1">
@@ -21,29 +21,29 @@
 					<div google-plus></div>
 					<div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
 			</div>
-			</div> -->
-			<!-- VIEW PRODUCT BTN -->
-			<button id="viewProductBtn" ng-show="!product.productTaken" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
-			 <!-- <div class="socialContainer">
-            <div class="fb1">
-                <div fb-like="myModel.FbLikeUrl"></div>
-            </div>
-            <div class="twit1">
-                <div tweet="myModel.Name"></div>
-            </div>
-            <div class="google1">
-                <div google-plus></div>
-            </div>
-            <div class="pin1">
-                <div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
-            </div>
-        </div> -->
-			<br />
-			<br />
-        </div>
-			<!-- VIEW PRODUCT BTN -->
-
+		</div> -->
+		<!-- VIEW PRODUCT BTN -->
+		<button id="viewProductBtn" ng-click="viewProduct(product)" class="btn btn-primary">View Product</button>
+		<div class="socialContainer">
+			<div class="fb1">
+				<div fb-like="myModel.FbLikeUrl"></div>
+			</div>
+			<div class="twit1">
+				<div tweet="myModel.Name"></div>
+			</div>
+			<div class="google1">
+				<div google-plus></div>
+			</div>
+			<div class="pin1">
+				<div pin-it="myModel.Name" pin-it-image="myModel.ImageUrl"></div>
+			</div>
+		</div>
+		<br />
+		<br />
 	</div>
+	<!-- VIEW PRODUCT BTN -->
+
+</div>
 </div>
 <div class="col-md-6">
 	<div id="panel2" class="panel2">
@@ -55,7 +55,8 @@
 			<h1>{{currentProduct.productTitle}}</h1>
 			<br />
 			<br />
-			<h3>Product Picture Here{{currentProduct.productPic}}</h3>
+			<img src='{{currentProduct.productPic.url}}'/>
+			<br />
 			<br />
 			<h3>Current Price:
 				<br/>
