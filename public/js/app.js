@@ -49,7 +49,15 @@ app.config(function($routeProvider, $httpProvider){
 			}
 		}
 	})
-	
+	.when('/products/:productId/checkout', {
+		templateUrl: 'views/checkout.html',
+		controller: 'checkoutControl',
+		resolve: {
+			product: function(productService, $route) {
+				return productService.getProduct($route.current.params.productId)
+			}
+		}
+	})
 	.otherwise({
 		redirectTo: '/products'
 	})
