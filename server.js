@@ -109,7 +109,7 @@ var userController = require('./server-assets/user/userControl');
 app.get('/', routes.index);
 app.get('/products', routes.products);  
 app.get('/products/:id', routes.product);
-app.put('/products/:id', routes.purchase);
+app.put('/products/:id', passportConf.isAuthenticated, routes.purchase);
 app.post('/products', routes.create);
 
 // app.get('/', homeController.index);

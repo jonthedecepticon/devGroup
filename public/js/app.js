@@ -33,7 +33,8 @@ app.config(function($routeProvider, $httpProvider){
 		controller: 'createControl'
 	})
 	.when('/profile', {
-		templateUrl: 'views/profile.html'
+		templateUrl: 'views/profile.html',
+		controller: 'userControl'
 	})
 	.when('/login', {
 		templateUrl: 'views/login.html',
@@ -50,7 +51,7 @@ app.config(function($routeProvider, $httpProvider){
 	})
 	
 	.otherwise({
-		redirectTo: '/login'
+		redirectTo: '/products'
 	})
  
 });

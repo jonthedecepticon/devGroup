@@ -31,6 +31,7 @@ $scope.purchase = function(){
 	// $scope.currentOrders = $scope.singleProduct.currentOrders;
 	// $scope.maxThreshold = $scope.singleProduct.peopleThreshold;
 	// $scope.currentThreshold = $scope.singleProduct.currentThreshold;
+	
 	productService.purchase($scope.currentProduct)
 	.then(function (savedProduct){
 		$scope.currentProduct = savedProduct;

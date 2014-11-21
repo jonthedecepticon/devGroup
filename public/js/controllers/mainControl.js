@@ -8,7 +8,7 @@ app.controller('mainControl', function($rootScope, $scope, productService, $loca
 	// };
 	// $scope.myModel.FbLikeUrl = 'http://localhost:3000';
 	// 
-	console.log($scope.products)
+	// console.log($scope.products)
 
 	$scope.updateUser = function(){
 		userService.getUser().then(function(data){
