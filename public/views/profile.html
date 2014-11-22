@@ -7,72 +7,51 @@
   <div class="form-group">
     <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3">
+      <input type="email" class="form-control" id="inputEmail3" ng-model="userUpdate.email" placeholder="{{user.email}}">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Name</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3">
-    </div>
-  </div>
-  <div class="form-group">
-  	Gender
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="gender">
-        <label class='radio'>
-          <input type="radio" name="gender" value="male" data-togegle="radio">
-          <span>Male</span>
-        </label>
-        <label class='radio'>
-          <input type="radio" name="gender" value="female" data-togegle="radio">
-          <span>Female</span>
-        </label>
-      </div>
+      <input type="text" class="form-control" id="inputPassword3" ng-model="userUpdate.name">
     </div>
   </div>
 </form>
 <form class="form-horizontal" role="form">
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">Location</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">Location</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3">
+      <input type="text" class="form-control" id="inputEmail3" ng-model="userUpdate.location">
     </div>
   </div>
   <div class="form-group">
     <label for="inputPassword3" class="col-sm-2 control-label">Website</label>
     <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3">
+      <input type="text" class="form-control" id="inputPassword3" ng-model="userUpdate.website">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Update Profile</button>
+      <button ng-click="updateProfile()" type="submit" class="btn btn-default">Update Profile</button>
     </div>
   </div>
 </form>
   <!-- / PROFILE -->
    <br>
-   <h2>Profile Information</h2>
+   <h2>Change Password</h2>
          <hr>
 <form class="form-horizontal" role="form">
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
+    <label for="inputPassword3" class="col-sm-2 control-label">New Password</label>
     <div class="col-sm-10">
-      <input type="email" class="form-control" id="inputEmail3">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Confirm Password</label>
-    <div class="col-sm-10">
-      <input type="password" class="form-control" id="inputPassword3">
+      <input type="password" class="form-control" id="inputPassword3" ng-model="updatePassword.password">
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Change Password</button>
+      <button type="submit" class="btn btn-default" ng-click="passwordUpdate()">Change Password</button>
     </div>
   </div>
 </form>
@@ -92,12 +71,19 @@
    <br>
    <h2>Linked Account</h2>
    <hr>
-   <a href="/auth/instagram">Link your Instagram account</a>
+   <a href="/auth/twitter">Link your Twitter account</a>
    <br>
    <a href="/auth/google">Link your Google account</a>
    <br>
    <a href="/auth/facebook">Link your Facebook account</a>
    <br>
-   <a href="/auth/twitter">Link your Twitter account</a>
+   <a href="/auth/paypal">Link your PayPal account</a>
    <br>
-   <a href="/account/unlink/:facebook" class="text-danger">Unlink your Facebook account</a>
+   <a href="" ng-click="unlinkAccount('google')" class="text-danger">Unlink your Google account</a>
+   <br>
+   <a href="" ng-click="unlinkAccount('twitter')" class="text-danger">Unlink your Twitter account</a>
+   <br>
+   <a href="" ng-click="unlinkAccount('facebook')" class="text-danger">Unlink your Facebook account</a>
+   <br>
+   <br>
+   <br>
