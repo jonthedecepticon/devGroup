@@ -1,6 +1,6 @@
 var app = angular.module('groupDropper');
 app.controller('productControl', function(product, $scope, $location, $routeParams, productService, $rootScope){
-	
+
 	$scope.getProducts = function(products){
 		productService.getProducts().then(function(products){
 			$scope.products = products;

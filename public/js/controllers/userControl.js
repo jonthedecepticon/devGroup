@@ -2,26 +2,70 @@ var app = angular.module('groupDropper');
 
 app.controller('userControl', function($rootScope, $scope, productService, $location, userService){
 	$scope.deleteUser = function() {
-		userService.deleteUser($scope.user.id);
+		userService.deleteUser()
+			.then(function(user){
+				$location.path('/login');
+			})
 	};
 
-	$scope.currentUser = function() {
+	$scope.unlinkAccount = function(provider){
+		userService.unlinkAccount(provider)
+			.then(function(user){
+				$location.path('/profile');
+			})
+	};
+	
+	$scope.updateProfile = function(){
+		 console.log('Scope user is: ', $scope.userUpdate)
+		userService.updateProfile($scope.userUpdate)
+			.then(function(user){
+				$location.path('/profile');
+			})
+			$scope.userUpdate = '';
+	}
+	//TODO: fix password
+	$scope.passwordUpdate = function(){
+		console.log('Scope user is: ', $scope.updatePassword)
+		userService.passwordUpdate($scope.updatePassword)
+			.then(function(user){
+				console.log('password updated')
+			})
+			$scope.updatePassword = '';
+
+	}
+
+	$scope.signUp = function(){
+		userService.signUp($scope.userSignUp)
+			.success(function(User){
+				$location.path('/products');
+			})
+			.error(function(){
+				console.log('incorrect')
+			})
+	}
+
+	$scope.login = function(){
+		userService.login($scope.userLogin)
+			.success(function(User){
+				$location.path('/products');
+			})
+			.error(function(){
+				console.log('incorrect')
+			})
+		
+	}
+	
+
+	$scope.getCurrentUser = function() {
 		userService.getCurrentUser().then(function(data) {
-			$scope.user = data;
-			console.log($scope.user);
-		})
-	}();
+			$scope.currentUser = data;
+			console.log('current User: ', $scope.currentUser);
+		});
+	};
+
+console.log('function')
+	$scope.getCurrentUser();
 });
 
-// from server.js/**
-//  * Load controllers.
-//  */
-// var Product = require('./server-assets/product/productModel');
-// var routes = require('./server-assets/database');
-// var User = require('./server-assets/user/userModel');
-// var homeController = require('./server-assets/home/homeControl');
-// var apiController = require('./server-assets/api/apiControl');
-// // var itemController = require('./server-assets/product/itemControl');
-// var contactController = require('./server-assets/contact/contactControl');
-// var userController = require('./server-assets/user/userControl');
+
 

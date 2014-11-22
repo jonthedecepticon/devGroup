@@ -1,23 +1,5 @@
 var app = angular.module('groupDropper', ['ngRoute', 'ngResource', 'ngCookies', 'angulike'])
 
-// app.run([
-// 	'$rootScope', function($rootScope) {
-//           $rootScope.facebookAppId = '653358958106368';
-//       }
-// 	])
-
-// app.run(function (userService, $rootScope, $location) {
-// 		$rootScope.$on("$routeChangeStart", function () {
-// 		var user = userService.getUser();
-// 			if(user){
-// 				$rootScope.user = user;
-// 			} else {
-// 				$location.path('/login');
-// 			}	
-// 	});
-// });
-
-
 app.config(function($routeProvider, $httpProvider){
 	$httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
   $httpProvider.interceptors.push('myHttpInterceptor');
@@ -26,18 +8,19 @@ app.config(function($routeProvider, $httpProvider){
 	$routeProvider
 	.when('/products', {
 		templateUrl: 'views/products.html',
-		controller: 'mainControl'
+		controller: 'mainControl',
 	})
 	.when('/create', {
 		templateUrl: 'views/create.html',
 		controller: 'createControl'
 	})
 	.when('/profile', {
-		templateUrl: 'views/profile.html'
+		templateUrl: 'views/profile.html',
+		controller: 'userControl'
 	})
 	.when('/login', {
 		templateUrl: 'views/login.html',
-		controller: 'mainControl'
+		controller: 'userControl'
 	})
 	.when('/products/:productId', {
 		templateUrl: 'views/products.html', // displays product data on same page
