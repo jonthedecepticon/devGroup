@@ -15,8 +15,8 @@
 				<ul>
 					<li><a href="/#/products">Home</a></li>
 					<li><a href="/#/profile">My Profile</a></li>
-					<li><a ng-click="logout()" href="/logout">Log Out</a></li>
-					<li><a ng-click="login()" ng-hide="userSignedIn" href="/login">Login</a></li>
+					<li><a ng-click= "logOut()" ng-show="userSignedIn" href="/logout">Log Out</a></li>
+					<li><a ng-hide="userSignedIn" href="/#/login">Login</a></li>
 				</ul>
 			</div>
 		</header>

@@ -68,5 +68,11 @@ app.service('userService', function($http, $q, $location){
 		});
 	}
 
+	this.logOut = function(user){
+		return $http({
+			method: 'GET',
+			url: '/logout',
+		});
+	}
 
 });

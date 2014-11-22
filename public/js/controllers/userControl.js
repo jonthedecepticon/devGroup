@@ -37,6 +37,7 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 	$scope.signUp = function(){
 		userService.signUp($scope.userSignUp)
 			.success(function(User){
+				$rootScope.userSignedIn = true;
 				$location.path('/products');
 			})
 			.error(function(){
@@ -47,10 +48,20 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 	$scope.login = function(){
 		userService.login($scope.userLogin)
 			.success(function(User){
+				$rootScope.userSignedIn = true;
 				$location.path('/products');
 			})
 			.error(function(){
 				console.log('incorrect')
+			})
+		
+	}
+
+	$scope.logOut = function(){
+		userService.logout()
+			.then(function(User){
+				$rootScope.userSignedIn = true;
+				
 			})
 		
 	}

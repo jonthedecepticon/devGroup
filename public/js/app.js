@@ -9,6 +9,15 @@ app.config(function($routeProvider, $httpProvider){
 	.when('/products', {
 		templateUrl: 'views/products.html',
 		controller: 'mainControl',
+		resolve: {
+			checkVerification: function(userService, $rootScope) {
+				userService.getCurrentUser().then(function(user) {
+					console.log('user: ' + user.data)
+					$rootScope.userSignedIn = true;
+					// return true;
+				})
+			}
+		}
 	})
 	.when('/create', {
 		templateUrl: 'views/create.html',
