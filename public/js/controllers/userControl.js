@@ -27,11 +27,11 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 	$scope.passwordUpdate = function(){
 		console.log('Scope user is: ', $scope.updatePassword)
 		userService.passwordUpdate($scope.updatePassword)
-			.then(function(User){
+			.then(function(user){
 				console.log('password updated')
 			})
-			// $scope.updatePassword1 = ''; 
-			// $scope.updatePassword2 = '';
+			$scope.updatePassword = '';
+
 	}
 
 	$scope.signUp = function(){
@@ -62,6 +62,9 @@ app.controller('userControl', function($rootScope, $scope, productService, $loca
 			console.log('current User: ', $scope.currentUser);
 		});
 	};
+
+console.log('function')
+	$scope.getCurrentUser();
 });
 
 

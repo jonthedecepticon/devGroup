@@ -8,7 +8,7 @@ app.config(function($routeProvider, $httpProvider){
 	$routeProvider
 	.when('/products', {
 		templateUrl: 'views/products.html',
-		controller: 'mainControl'
+		controller: 'mainControl',
 	})
 	.when('/create', {
 		templateUrl: 'views/create.html',

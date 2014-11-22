@@ -4,7 +4,7 @@ app.service('userService', function($http, $q, $location){
 	this.getCurrentUser = function() {
 		return $http({
 			method: 'GET',
-			url: '/account'
+			url: '/account/getUserID'
 		});
 	}
 
@@ -22,13 +22,13 @@ app.service('userService', function($http, $q, $location){
 			url: '/account/unlink/' + provider
 		});
 	}
-	//TODO: fix update so string doesnt delete previous info. 
+	
 	this.updateProfile = function(user){
 		return $http({
 			method: 'POST',
 			url: '/account/profile',
 			data: {
-				email: user.email,
+				email: user.email.toLowerCase(),
 				name: user.name,
 				location: user.location,
 				website: user.website
@@ -51,7 +51,7 @@ app.service('userService', function($http, $q, $location){
 			method: 'POST',
 			url: '/signup',
 			data: {
-				email: user.email,
+				email: user.email.toLowerCase(),
 				password: user.password
 			}
 		});
@@ -62,7 +62,7 @@ app.service('userService', function($http, $q, $location){
 			method: 'POST',
 			url: '/login',
 			data: {
-				email: user.email,
+				email: user.email.toLowerCase(),
 				password: user.password
 			}
 		});
