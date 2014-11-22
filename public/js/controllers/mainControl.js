@@ -71,7 +71,3 @@ $scope.getProduct = function(id) {
 $scope.getProducts();
 
 });
-
-
-
-

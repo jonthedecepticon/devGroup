@@ -15,6 +15,7 @@ app.controller('productControl', function(product, $scope, $location, $routePara
 
 
 $scope.purchase = function(){
+
 	productService.purchase($scope.currentProduct)
 	.then(function (savedProduct){
 		$scope.currentProduct = savedProduct;

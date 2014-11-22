@@ -34,6 +34,7 @@ mongoose.connection.on('error', function() {
 });
 var app = express();
 
+
 /**
  * Cloudinary configuration.
  */
@@ -42,6 +43,7 @@ var app = express();
 //   api_key: '357753245132285', 
 //   api_secret: 'a676b67565c6767a6767d6767f676fe1' 
 // });
+
 
 /**
  * Express configuration.
@@ -66,6 +68,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
 app.use(function(req, res, next) {
   // Make user object available in templates.
   res.locals.user = req.user;
@@ -134,11 +137,15 @@ app.post('/api/stripe', apiController.postStripe);
  */
 app.get('/auth/instagram', passport.authenticate('instagram'));
 app.get('/auth/instagram/callback', passport.authenticate('instagram', { failureRedirect: '/login' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  // res.redirect(req.session.returnTo || '/');
+console.log('res: ' + res)
+  res.send(res)
 });
 app.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email', 'user_location'] }));
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/#/products/', failureRedirect: '/login' }), function(req, res) {
-  res.redirect(req.session.returnTo || '/');
+  // res.redirect(req.session.returnTo || '/');
+  console.log('res: ' + res)
+  res.send(res)
 });
 app.get('/auth/github', passport.authenticate('github'));
 app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/login' }), function(req, res) {
