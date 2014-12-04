@@ -117,8 +117,8 @@ exports.postSignup = function(req, res, next) {
  */
 
 exports.getAccount = function(req, res) {
-  console.log('user: ' + req.user.id)
-  res.send(req.user.id);
+  console.log('user: ' + req.user)
+  res.send(req.user);
 };
 
 /**
